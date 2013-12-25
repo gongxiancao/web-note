@@ -1,0 +1,11 @@
+{
+  "Note":
+  {
+    "idType": "objId"
+  },
+  "Category":
+  {
+    "idType": "autoInc",
+    "nextId": 0
+  }
+}

@@ -1,0 +1,315 @@
+{
+    "menu": {
+        "__placeholder__": "",
+        "Sample Application": "Sample Application",
+        "Locations": "Locations",
+        "PlayGround": "PlayGround",
+        "Graphics Playground": "Graphics Playground",
+        "UI Kit": "UI Kit",
+        "Icons": "Icons",
+        "defectsManagement": "Defects Management",
+        "releaseConfiguration" : "Release Configuration",
+        "sprintConfiguration" : "Sprint Configuration",
+        "EMS E2E Demo": "EMS E2E Demo",
+        "Employee Search": "Employee Search",
+        "Grid QA Play Ground": "Grid QA Play Ground",
+        "Slick Grid": "Slick Grid",
+        "QA Sample Application": "QA Sample Application",
+
+        "Storm": "Storm",
+        "loadTest": "Load Test",
+        "editLoadTest": "Edit Load Test",
+        "loadTestsList": "Load Tests List",
+        "loadScripts":"Load Scripts",
+        "loadTesting": "Load Testing",
+        "Agreements": "Agreements",
+        "agileManager": "Agile Manager",
+        "Service Anywhere": "Service Anywhere",
+        "Change Management": "Change Management",
+        "Changes": "Changes",
+        "Problem Management": "Problem Management",
+        "Problems": "Problems",
+        "Change Models": "Change Models",
+        "Problem Models": "Problem Models",
+        "Change Templates": "Change Templates",
+        "Problem Templates": "Problem Templates",
+        "Incident Templates": "Incident Templates",
+        "Service Asset Configuration Management": "Service Asset and Configuration Management",
+        "SAW Administration": "SAW Administration",
+        "Administration": "Administration",
+        "Entity Management": "Entity Management",
+        "Entity Templates": "Templates",
+        "List Management": "List Management",
+        "Form Designer": "Form Designer",
+        "Users": "Users",
+        "Devices": "Devices",
+        "Application Systems": "Application Systems",
+        "Employee Self Service": "Employee Self Service",
+        "ESS-Home": "Service Anywhere",
+        "ESS-QnA": "QnA",
+        "Services": "Services",
+        "ESS Admin": "ESS Admin",
+        "Run": "Run",
+        "Build": "Build",
+        "Service Catalog Management": "Service Catalog Management",
+        "Service Request Management":"Service Request Management",
+        "People":"People",
+        "Organization":"Organization",
+        "Groups":"Groups",
+        "Roles":"Roles",
+        "Incident Management":"Incident Management",
+        "Incident Activities":"Incident Activities",
+        "Incident Areas":"Incident Areas",
+        "Incident Categories":"Incident Categories",
+        "Incidents":"Incidents",
+        "Incident Subcategories":"Incident Subcategories",
+        "Service Level Management":"Service Level Management",
+        "Agreements":"Service Level Agreements",
+        "TargetSets":"Service Level Target sets",
+        "Definitions":"Service Level Target definitions"
+    },
+
+    "dialog": {
+        "CancelButton": "Cancel",
+        "OKButton": "OK",
+        "YesButton": "Yes",
+        "NoButton": "No",
+        "NewEntityTitle": "New {{0}}",
+        "Save": "Save",
+        "SaveAndAdd": "Save and Add Another",
+        "SaveAndEdit": "Save and Edit"
+    },
+
+    "callouts": {
+        "LearnMore": "Learn More",
+        "DisableAllCallouts": "Disable all callouts",
+        "callout-1": {
+            "text": "Sample callout 1 text.",
+            "learnMoreLink": "link1"
+        },
+        "callout-2": {
+            "text": "Sample callout 2 text.",
+            "learnMoreLink": "link2"
+        }
+
+    },
+
+    "callouts-wizard": {
+        "next": "Next",
+        "prev": "Prev",
+        "finish": "Finish"
+    },
+
+    "form": {
+        "more": "Show More",
+        "less": "Show Less",
+        "Yes": "Yes",
+        "No": "No",
+        "errorMessage": "Please fill the empty required field",
+        "statusError": "empty required field saving error",
+        "placeholder": {
+            "select": "-- Please Select One --"
+        }
+    },
+
+    "entityPage": {
+        "leavePage": {
+            "title": "Notice!",
+            "okButton": "Ok",
+            "cancelButton": "Cancel",
+            "message": "Are you sure you want to leave without save?"
+        },
+        "save": {
+            "success": "Entity has been saved",
+            "fail": "Entity saving failed"
+        },
+        "entityTemplate": {
+            "applyButton": "Apply template",
+            "applyWarning": "Value Replacement Warning",
+            "applySuccess" : "Template {{0}} was applied successfully.",
+            "applyNotApplicable" : "Template {{0}} has no applicable fields.",
+            "saveAsButton": "Save as template",
+            "saveAsWarningTitle": "Notice",
+            "saveAsWarningMessage": "Entity will be save before generating the template. Continue?"
+        },
+        "sendByEmailButton": "Send by Email"
+    },
+
+    "entityTemplate": {
+
+        "typeHeader" : "{{0}} Template",
+        "generalHeader" : "Entity Template",
+
+        "nameField" : "Title",
+        "entityTypeField" : "Type",
+        "descriptionField" : "Description",
+
+        "noneSelected": "No selected Entity Template.",
+
+        "saveButton" : "Save",
+        "deleteButton" : "Delete",
+
+        "saveSuccess" : "Template '{{0}}' was saved Successfully.",
+        "saveFailure" : "Failed to save template: {{0}}'.",
+
+        "requiredError" : "Please fill the required fields before save",
+
+        "fromTicketFailed" : "Failed generating template from ticket.",
+
+        "deleteSuccess": "Template '{{0}}' was deleted Successfully.",
+        "deleteFailure": "Failed to delete template: {{0}}'.",
+
+        "templateDetails" : "Template Details",
+        "templateContent" : "Template Content",
+        "noEntityType" : "No data to display. Please select a template type.",
+
+        "leavePageTitle" : "Warning",
+        "leavePageMessage": "Are you sure you want to leave without saving?"
+
+    },
+
+    "comments": {
+        "addNewComment": "Add",
+        "deleteComment": "Delete",
+        "updateComment": "Edit",
+        "dialogTitle": "Edit Comment",
+        "confirmDeleteTitle": "Confirm Comments Deletion",
+        "confirmDeleteContent": "Are you sure you want to delete the comment"
+    },
+
+    "attachments":{
+        "more":"{{0}} More",
+        "less":"Show Less",
+        "deleteAttachment":"Delete",
+        "confirmDeleteTitle": "Confirm Attachment Deletion",
+        "confirmDeleteContent": "Are you sure you want to delete the attachment?",
+        "deleteNotification": "Attachment had been deleted",
+        "failedAddAttachmentTitle": "Upload Attachment Error",
+        "failedAddAttachment" : {
+            "fileType" : "This file type is not allowed to upload.",
+            "fileSize" : "File size is exceeded {{0}} MB.",
+            "maxConcurrent" : "Max concurrent uploading files of '{{0}}' exceeded.",
+            "unexpected" : "Error occurs during uploading file"
+        },
+        "unknownUploadedDate": "unknown",
+        "loadAttachmentsFailed": "Load attachments failed",
+        "uploadButtonTooltip": "Select file to upload",
+        "uploadButtonTitle": "Add",
+        "attachment": {
+            "uploadedBy": "Uploaded by:"
+        }
+    },
+
+    "entityAttachments": {
+        "missingAttachmentsProperty": "Entity type {{0}} does not support attachments."
+    },
+
+    "newEntityMessages": {
+        "createSuccess": "Successfully created {{0}} {{1}}.",
+        "createFailed": "Failed to create entity. Error: {{0}}."
+    },
+
+    "users": {
+        "header": "Users",
+        "createUser": "Create User",
+        "deleteUser": "Delete User",
+        "makeCurrent": "Make Current User"
+    },
+    "entityPicker": {
+        "GridTitle": "Entity Picker Grid",
+        "openGridIconAlt": "Open entity picker as grid"
+    },
+    "multiEntityPicker": {
+        "buttons": {
+            "add": "Add",
+            "remove": "Remove"
+        },
+        "errorMessageOnRequire":"Please select at least an entity, empty is not allowed"
+    },
+    "grid": {
+        "gridToolbarDrtv": {
+            "buttons": {
+                "add": "Add",
+                "edit": "Edit",
+                "delete": "Delete",
+                "refresh": "Refresh",
+                "selectColumns": "Select Columns"
+            }
+        },
+        "confirmDeleteTitle": "Confirm Delete",
+        "confirmDelete": "Are you sure you want to delete the selected item?",
+        "config": {
+            "tooltip": {
+                "isSelectedColumn": "Select/Deselect All"
+            }
+        }
+    },
+    "filter": {
+        "filterPanelDrtv": {
+            "buttons": {
+                "add": "Add",
+                "clear": "Clear"
+            }
+        }
+    },
+    "maasTitle": {
+        "windowTitle": "HP MaaS"
+    },
+    "moreButtonText": "More",
+    "imageUpload": {
+        "save": {
+            "success": "Avatar was saved",
+            "failure": "Failed to save avatar"
+        },
+        "buttonText": {
+            "upload": "Choose file",
+            "change": "Change"
+        },
+        "text": {
+            "dragAndDrop":"Drag and drop an image from your computer",
+            "orText": "or"
+        }
+    },
+    "userProfile": {
+        "saveButtonText": "Save",
+        "save": {
+            "success": "User Profile was successfully saved",
+            "failure": "Failed to save user profile"
+        },
+        "chooseLocale": "Choose Locale: "
+    },
+	"userImageProfile": {
+		"save": {
+			"success": "User Profile was successfully saved",
+			"failure": "Failed to save user profile"
+		},
+		"saveButtonText": "Save",
+		"toTheNextStep": "Next step"
+	},
+    "userSkills": {
+        "title": "Update your skills",
+        "inputPlaceholder": "Add some skills to your profile, separated by comma or enter",
+        "categories": {
+            "software-title": "Please list application and software tools you frequently use:",
+            "devices-title": "Please list computers, laptops and mobile devices you use:"
+        },
+        "saveButtonText": "Save",
+        "toTheNextStep": "Next step",
+        "save": {
+            "success": "User skills has been saved successfully",
+            "failure": "Failed to save user skills"
+        }
+    },
+    "propertyGrid": {
+        "title": "Display Properties"
+    },
+    "sendByEmail": {
+        "title": "Send entity {{0}} #{{1}} by e-mail",
+        "to" : "To",
+        "message" : "Message",
+        "sendButtonText": "Send",
+        "failureMessage": "Failed to send entity id {{0}} of type {{1}} by email",
+        "sendMeCopy": "Send me a copy"
+    }        
+}
+

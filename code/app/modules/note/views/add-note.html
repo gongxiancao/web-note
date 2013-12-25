@@ -1,0 +1,14 @@
+<div class="note" ng-controller="AddNoteCtrl">
+    <div class="property-line">
+        <div class="property-label">Subject</div>
+        <div>
+            <input type="text" ng-model="model.data.subject"></input>
+        </div>
+    </div>
+    <div class="property-line content">
+        <div class="property-colon-label">Content:</div>
+        <div class="input">
+            <textarea ui-tinymce="{resize:false}" ng-model="model.data.content"></textarea>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+@import "third-party";
+@maxSize: 99999999px;
+
+.h-center (@width; @search-btn-width: 90px) {
+	margin: 10px auto;
+	width: @width;
+	input[type="text"] {
+		width: (@width - @search-btn-width);
+	}
+}
+
+.h-center800 {
+	.h-center(800px);
+}
+
+.span (@size) {
+	width: @size * 10px;
+}
+
+.span-rest (@size, @margin) {
+	width: ~"calc( 100% - @{size} * 10px - @{margin})";
+}
+
+.fullscreen-tinymce {
+	.mce-tinymce {
+		height: 100%;
+		.mce-container-body {
+			height: 100%;
+			.mce-edit-area {
+				height: ~"calc(100% - 103px)";
+				iframe {
+					height: 100% !important;
+				}
+			}
+		}
+	}
+}
+
+.note {
+	height: ~"calc(100% - 15px)";
+	.property-line {
+		margin: 10px 0;
+		@label-size: 8;
+		.property-label {
+			float: left;
+			.span(@label-size);
+			margin: 5px 10px 5px 0;
+		}
+		input {
+			.span-rest(@label-size, 30px);
+		}
+	}
+
+	.content {
+		height:~"calc(100% - 40px)";
+		.input {
+			height: ~"calc(100% - 30px)";
+			.fullscreen-tinymce;
+		}
+	}
+
+	.property-colon-label {
+		margin: 5px 10px 5px 0;
+	}
+}
+
+.add-note.modal {
+	width: ~"calc(100% - 500px)";
+	height: 100%;
+	left: 400px;
+	top: 0;
+	margin: 0;
+	.modal-body {
+		height: ~"calc(100% - 140px)";
+		max-height: @maxSize;
+	}
+}
