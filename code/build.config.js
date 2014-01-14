@@ -27,6 +27,11 @@ module.exports = {
             'vendor/jszip/jszip-deflate.js',
             'vendor/angular-translate/angular-translate.js',
             'vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.js'
+        ],
+        css: [
+            'vendor/jquery-ui/themes/base/jquery-ui.css',
+            'vendor/select2/select2.css',
+            'app/resources/css/note.css'
         ]
     }
 };
