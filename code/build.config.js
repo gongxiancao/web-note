@@ -3,10 +3,7 @@
  */
 module.exports = {
     vendor_files: {
-        assets: [
-
-            'vendor/common.library/shared-resources/*', /*shared with server*/
-
+        js: [
             'vendor/jquery/jquery.js',
             'vendor/lodash/dist/lodash.js',
             'vendor/angular/angular.js',

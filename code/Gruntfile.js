@@ -11,6 +11,7 @@ module.exports = function (grunt) {
             app: 'app',
             log: 'log',
             build: 'build',
+            build_log: 'build_log',
             compile: 'bin',
             server: 'server',
             root: __dirname
@@ -37,7 +38,7 @@ module.exports = function (grunt) {
             ]
         },
         clean: {
-            build_log: ['<%= paths.log %>'],
+            build_log: ['<%= paths.build_log %>'],
             build: ['<%= paths.build %>']
         },
         copy: {
@@ -45,7 +46,7 @@ module.exports = function (grunt) {
                 files: [
                     {
                         src: [ '**' ],
-                        dest: '<%= paths.build %>/',
+                        dest: '<%= paths.build %>/app',
                         cwd: '<%= paths.app %>/',
                         expand: true
                     }
@@ -69,7 +70,7 @@ module.exports = function (grunt) {
 
             options: {
                 reporter: require('jshint-junit-reporter'),
-                reporterOutput: '<%= paths.build %>/reports/lint/jshint-junit.xml',
+                reporterOutput: '<%= paths.build_log %>/reports/lint/jshint-junit.xml',
                 jshintrc: '.jshintrc'
             }
         },
@@ -111,7 +112,8 @@ module.exports = function (grunt) {
             build: {
                 dir: '<%= paths.build %>',
                 src: [
-                    '<%= paths.build %>/**/*.js',
+                    '<%= vendor_files.js %>',
+                    '<%= paths.build %>/app/**/*.js',
                     //'<%= paths.build %>/src/app/*.modules.js',
                     //'<%= paths.build %>/src/**/*.js',
                     //'<%= html2js.common.dest %>',
@@ -194,7 +196,7 @@ module.exports = function (grunt) {
             var lessPath =  path.dirname(lessFile);
             options.paths.push(lessPath);
             var cssFile = lessFile.replace('.less', '.css');
-            console.log(cssFile);
+
             if (buildType === 'dev') {
                 files[cssFile] = lessFile;
             } else {
