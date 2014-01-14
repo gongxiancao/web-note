@@ -3,41 +3,16 @@
   <head>
     <title>Note Tree</title>
 
-    <link rel="stylesheet" href="resources/css/jquery-ui/jquery-ui-1.10.2.custom.min.css"/>
-    <link rel="stylesheet" href="resources/css/select2/select2.css"/>
-    <link rel="stylesheet" href="resources/css/note.css"/>
+    <!-- compiled CSS -->
+    <% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" />
+    <% }); %>
 
-    <script src="lib/jquery/dev/jquery.js"></script>
-    <script src="lib/tinymce/dev/tinymce.js"></script>
-    <script src="lib/angular/dev/angular.js"></script>
-    <script src="lib/angular/dev/angular-resource.js"></script>
-    <script src="lib/ui-bootstrap/dev/ui-bootstrap-tpls-0.1.0.js"></script>
-    <script src="lib/ui-tinymce/dev/ui-tinymce.js"></script>
-    <script src="modules/ui/ui.js"></script>
-    <script src="modules/ui/controllers/dialog-ctrl.js"></script>
-    <script src="modules/ui/services/dialog-svc.js"></script>
-    <script src="modules/platform/platform.js"></script>
-    <script src="modules/platform/services/utility-svc.js"></script>
-    <script src="modules/platform/services/configuration-svc.js"></script>
-    <script src="modules/platform/services/logger-svc.js"></script>
-    <script src="modules/platform/services/entity-svc.js"></script>
-    <script src="modules/note/note.js"></script>
-    <script src="modules/note/services/entity-factory-svc.js"></script>
-    <script src="modules/note/services/note-svc.js"></script>
-    <script src="modules/note/services/category-svc.js"></script>
-    <script src="modules/note/services/note-ui-svc.js"></script>
-    <script src="modules/note/controllers/add-note-ctrl.js"></script>
-    <script src="modules/note/controllers/note-ctrl.js"></script>
-    <script src="modules/note/controllers/note-list-ctrl.js"></script>
-    <script src="modules/note/controllers/note-management-ctrl.js"></script>
-    <script src="modules/note/controllers/note-detail-ctrl.js"></script>
-    <script src="modules/note/controllers/note-search-ctrl.js"></script>
-    <script src="modules/note/controllers/note-toolbar-ctrl.js"></script>
-    <script src="modules/note/controllers/category-ctrl.js"></script>
-    <script src="modules/note/directives/note-toolbar-drtv.js"></script>
-    <script src="modules/note/directives/note-search-drtv.js"></script>
-    <script src="modules/note/directives/note-list-drtv.js"></script>
-    <script src="modules/note/directives/note-tree-drtv.js"></script>
+    <!-- compiled JavaScript -->
+    <% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script>
+    <% }); %>
+
   </head>
   <body>
     <div ng-view></div>
