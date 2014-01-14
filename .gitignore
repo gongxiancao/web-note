@@ -222,3 +222,4 @@ code/app/resources/css/*.css
 code/app/resources/css/note.css
 code/app/resources/css/theme.css
 code/app/resources/css/third-party.css
+code/vendor/
