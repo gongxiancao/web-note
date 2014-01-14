@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogService', 'NoteService', 'CategoryService', 'UtilityService',
-    function ($rootScope, $q, DialogService, NoteService, CategoryService, UtilityService) {
+angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogService', 'NoteEntity', 'CategoryService', 'UtilityService',
+    function ($rootScope, $q, DialogService, NoteEntity, CategoryService, UtilityService) {
         this.newNoteAdded = 'newNoteAdded';
         this.newCategoryAdded = 'newCategoryAdded';
 
@@ -18,7 +18,7 @@ angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogServ
                             disabled: UtilityService.$false,
                             handler: function (note) {
                                 this.close(note);
-                                note.save().then(
+                                NoteEntity.save(note).$promise.then(
                                     function (note) {
                                         $rootScope.$broadcast(that.newNoteAdded, note);
                                     },
