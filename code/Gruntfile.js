@@ -23,6 +23,7 @@ module.exports = function (grunt) {
                 'clean:build',
                 'copy:build_app_assets',
                 'copy:build_vendor_assets',
+                'copy:build_vendor_js',
                 'less2css',
                 'jshint',
                 'index'
@@ -34,6 +35,7 @@ module.exports = function (grunt) {
                 'clean:build',
                 'copy:build_app_assets',
                 'copy:build_vendor_assets',
+                'copy:build_vendor_js',
                 'less2css:dev',
                 'jshint',
                 'index'
@@ -62,6 +64,16 @@ module.exports = function (grunt) {
                         cwd: '<%= paths.root %>',
                         expand: true,
                         flatten: true
+                    }
+                ]
+            },
+            build_vendor_js: {
+                files: [
+                    {
+                        src: [ '<%= vendor_files.js %>' ],
+                        dest: '<%= paths.build %>',
+                        cwd: '<%= paths.root %>',
+                        expand: true
                     }
                 ]
             },
