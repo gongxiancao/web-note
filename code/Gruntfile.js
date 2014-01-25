@@ -127,7 +127,8 @@ module.exports = function (grunt) {
                 dir: '<%= paths.build %>',
                 src: [
                     '<%= vendor_files.js %>',
-                    '<%= paths.build %>/**/*.js',
+                    '<%= app_files.js %>',
+                    //'<%= paths.build %>/**/*.js',
                     //'<%= paths.build %>/src/app/*.modules.js',
                     //'<%= paths.build %>/src/**/*.js',
                     //'<%= html2js.common.dest %>',

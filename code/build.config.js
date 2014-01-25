@@ -2,6 +2,13 @@
  * This file/module contains all configuration for the build process.
  */
 module.exports = {
+    app_files: {
+        js: [
+            'build/*.js',
+            'build/modules/*/*.js',
+            'build/modules/*/**/*.js'
+        ]
+    },
     vendor_files: {
         js: [
             'vendor/jquery/jquery.js',
@@ -14,17 +21,10 @@ module.exports = {
             'vendor/ng-grid/ng-grid-2.0.7.debug.js',
             'vendor/log4javascript/log4javascript.js',
             'vendor/angular-resource/angular-resource.js',
-            'vendor/bootstrap/dist/js/bootstrap.js',
             'vendor/angular-bootstrap/ui-bootstrap.js',
             'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
             'vendor/d3/d3.js',
             'vendor/nvd3/nv.d3.js',
-            'vendor/angular-xeditable/dist/js/xeditable.js',
-            'vendor/angular-dragdrop/src/angular-dragdrop.js',
-            'vendor/jszip/jszip.js',
-            'vendor/jszip/jszip-load.js',
-            'vendor/jszip/jszip-inflate.js',
-            'vendor/jszip/jszip-deflate.js',
             'vendor/angular-translate/angular-translate.js',
             'vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.js'
         ],
