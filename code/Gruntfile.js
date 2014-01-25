@@ -24,7 +24,8 @@ module.exports = function (grunt) {
                 'copy:build_app_assets',
                 'copy:build_vendor_assets',
                 'less2css',
-                'jshint'
+                'jshint',
+                'index'
                 //'csslint',
                 //'cssmin'
             ],
@@ -34,7 +35,8 @@ module.exports = function (grunt) {
                 'copy:build_app_assets',
                 'copy:build_vendor_assets',
                 'less2css:dev',
-                'jshint'
+                'jshint',
+                'index'
             ]
         },
         clean: {
@@ -46,7 +48,7 @@ module.exports = function (grunt) {
                 files: [
                     {
                         src: [ '**' ],
-                        dest: '<%= paths.build %>/app',
+                        dest: '<%= paths.build %>',
                         cwd: '<%= paths.app %>/',
                         expand: true
                     }
@@ -113,7 +115,7 @@ module.exports = function (grunt) {
                 dir: '<%= paths.build %>',
                 src: [
                     '<%= vendor_files.js %>',
-                    '<%= paths.build %>/app/**/*.js',
+                    '<%= paths.build %>/**/*.js',
                     //'<%= paths.build %>/src/app/*.modules.js',
                     //'<%= paths.build %>/src/**/*.js',
                     //'<%= html2js.common.dest %>',
@@ -134,6 +136,8 @@ module.exports = function (grunt) {
         grunt.task.run(this.data);
     });
 
+    grunt.registerTask('default', ['buildClient:dev', 'server']);
+/*
     grunt.registerTask('buildSelenium', [
         'exec:build-automation',
         'e2eTests:dev'
@@ -154,7 +158,7 @@ module.exports = function (grunt) {
         'jshint',
         'unit'
     ]);
-
+*/
     var find = require('find'),
         path = require('path');
 

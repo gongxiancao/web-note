@@ -1,6 +1,6 @@
 var dataServer = require('./data-server'),
     staticServer = require('./static-server'),
-    fullDir = require('path').resolve(__dirname + "/../app"),
+    fullDir = require('path').resolve(__dirname + "/../build"),
     express = require('express'),
     app = express(),
     argv = require('optimist')

@@ -32,6 +32,7 @@ module.exports = {
             'vendor/jquery-ui/themes/base/jquery-ui.css',
             'vendor/select2/select2.css',
             'app/resources/css/note.css'
-        ]
+        ],
+        assets: []
     }
 };
