@@ -223,3 +223,6 @@ code/app/resources/css/note.css
 code/app/resources/css/theme.css
 code/app/resources/css/third-party.css
 code/vendor/
+
+#Build outputs
+build_log/
