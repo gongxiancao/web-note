@@ -1,7 +1,7 @@
 angular.module('note').directive('noteList', [function () {
     return {
         restrict: 'EA',
-        templateUrl: 'modules/note/views/note-list-tmpl.html',
+        templateUrl: 'modules/note/templates/note-list-tmpl.tpl.html',
         controller: 'NoteListCtrl',
         scope: {
             actionHandler: '&',

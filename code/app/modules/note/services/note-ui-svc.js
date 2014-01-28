@@ -10,7 +10,7 @@ angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogServ
             var that = this;
             var opts = {
                     title: 'Add new note',
-                    contentUrl: 'modules/note/views/add-note.html',
+                    contentUrl: 'modules/note/templates/add-note.tpl.html',
                     buttonInfos: [
                         {
                             label: 'Save',
@@ -47,7 +47,7 @@ angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogServ
             var that = this;
             var opts = {
                     title: 'Add new category',
-                    contentUrl: 'modules/note/views/add-category.html',
+                    contentUrl: 'modules/note/templates/add-category.tpl.html',
                     buttonInfos: [
                         {
                             label: 'Save',

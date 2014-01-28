@@ -1,7 +1,7 @@
 angular.module('note').directive('noteToolbar', [function () {
     return {
         restrict: 'EA',
-        templateUrl: 'modules/note/views/note-toolbar-tmpl.html',
+        templateUrl: 'modules/note/templates/note-toolbar-tmpl.tpl.html',
         controller: 'NoteToolbarCtrl',
         scope: {
             actionHandler: '&',

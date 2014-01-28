@@ -1,7 +1,7 @@
 angular.module('note').directive('noteSearch', [function () {
     return {
         restrict: 'EA',
-        templateUrl: 'modules/note/views/note-search-tmpl.html',
+        templateUrl: 'modules/note/templates/note-search-tmpl.tpl.html',
         controller: 'NoteSearchCtrl',
         scope: {
             actionHandler: '&',

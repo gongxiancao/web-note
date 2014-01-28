@@ -21,7 +21,6 @@ module.exports = {
             'vendor/ng-grid/ng-grid-2.0.7.debug.js',
             'vendor/log4javascript/log4javascript.js',
             'vendor/angular-resource/angular-resource.js',
-            'vendor/angular-bootstrap/ui-bootstrap.js',
             'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
             'vendor/d3/d3.js',
             'vendor/nvd3/nv.d3.js',

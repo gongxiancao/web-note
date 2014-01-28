@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('ui').service('DialogService', ['$rootScope', '$dialog',
-    function ($rootScope, $dialog) {
+angular.module('ui').service('DialogService', ['$rootScope', '$modal',
+    function ($rootScope, $modal) {
         this.open = function (opts, model) {
             opts = opts || {};
             opts.controller = opts.controller || 'DialogCtrl';
@@ -16,10 +16,9 @@ angular.module('ui').service('DialogService', ['$rootScope', '$dialog',
             opts.resolve.model = opts.resolve.model || model;
 
             if(!(opts.template || opts.templateUrl)){
-                opts.templateUrl = 'modules/ui/views/dialog-tmpl.html';
+                opts.templateUrl = 'modules/ui/template/dialog-tmpl.html';
             }
-            var d = $dialog.dialog(opts);
-            return d.open();
+            return $modal.open(opts).result;
         }
     }
 ]);
