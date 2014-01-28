@@ -5,7 +5,7 @@ module.exports = {
         done();
     },
     config: function (app, options, done) {
-        app.use(express.logger());
+        //app.use(express.logger());
 
         if(!options.production) {
             var lessMiddleware = require('less-middleware');

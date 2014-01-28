@@ -80,7 +80,10 @@ module.exports = function (grunt) {
         },
 
         jshint: {
-            all: ['<%= paths.app %>/js/**/*.js'],
+            all: [
+                '<%= paths.app %>/js/**/*.js',
+                '<%= paths.server/**/*.js'
+            ],
 
             options: {
                 reporter: require('jshint-junit-reporter'),

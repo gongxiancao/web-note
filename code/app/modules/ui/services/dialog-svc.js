@@ -16,7 +16,7 @@ angular.module('ui').service('DialogService', ['$rootScope', '$modal',
             opts.resolve.model = opts.resolve.model || model;
 
             if(!(opts.template || opts.templateUrl)){
-                opts.templateUrl = 'modules/ui/template/dialog-tmpl.html';
+                opts.templateUrl = 'modules/ui/templates/dialog-tmpl.html';
             }
             return $modal.open(opts).result;
         }

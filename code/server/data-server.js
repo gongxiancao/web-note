@@ -6,7 +6,7 @@ module.exports = {
     },
     config: function (app, options, done) {
         function TenantHandler (req, res, next) {
-            req.ctx={};
+            req.ctx = {};
             req.ctx.tenant = req.query.tenant;
             req.ctx.user = 1;
             next();
@@ -14,31 +14,36 @@ module.exports = {
         app.use(TenantHandler);
 
         app.get('/api/notes', function(req, res){
-            dal(req.ctx).queryNotes(function (items) {
-                res.json(item);
+            console.log('*enter queryNotes*');
+            dal(req.ctx).queryNotes(function (err, items) {
+                res.json(items);
             });
         });
 
         app.get('/api/notes/:id', function (req, res) {
-            dal(req.ctx).getNote(req.params.id, function (items) {
+            console.log('*enter getNote*');
+            dal(req.ctx).getNote(req.params.id, function (err, item) {
                 res.json(item);
             });
         });
 
         app.post('/api/notes', function(req, res){
-            dal(req.ctx).createNote(req.body, function (items) {
+            console.log('*enter createNote*');
+            dal(req.ctx).createNote(req.body, function (err, item) {
                 res.json(item);
             });
         });
 
         app.put('/api/notes/:id', function(req, res){
-            dal(req.ctx).updateNote(req.params.id, req.body, function (items) {
+            console.log('*enter updateNote*');
+            dal(req.ctx).updateNote(req.params.id, req.body, function (err, item) {
                 res.json(item);
             });
         });
 
         app.del('/api/notes/:id', function(req, res){
-            dal(req.ctx).deleteNote(req.params.id, function (items) {
+            console.log('*enter deleteNote*');
+            dal(req.ctx).deleteNote(req.params.id, function (err, item) {
                 res.json(item);
             });
         });
