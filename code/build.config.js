@@ -7,6 +7,12 @@ module.exports = {
             'build/*.js',
             'build/modules/*/*.js',
             'build/modules/*/**/*.js'
+        ],
+        css: [
+            'vendor/jquery-ui/themes/base/jquery-ui.css',
+            'vendor/select2/select2.css',
+            'build/resources/css/third-party.css',
+            'build/resources/css/note.css'
         ]
     },
     vendor_files: {
@@ -29,9 +35,6 @@ module.exports = {
             'vendor/angular-ui-tinymce/src/tinymce.js'
         ],
         css: [
-            'vendor/jquery-ui/themes/base/jquery-ui.css',
-            'vendor/select2/select2.css',
-            'app/resources/css/note.css'
         ],
         assets: []
     }

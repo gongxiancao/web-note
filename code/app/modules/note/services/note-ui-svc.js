@@ -7,8 +7,9 @@ angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogServ
         this.newCategoryAdded = 'newCategoryAdded';
 
         this.openAddNewNote = function(note) {
-            var that = this;
-            var opts = {
+            var that = this,
+                scope = $rootScope.$new(),
+                opts = {
                     title: 'Add new note',
                     contentUrl: 'modules/note/templates/add-note.tpl.html',
                     buttonInfos: [
@@ -37,10 +38,10 @@ angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogServ
                             }
                         }
                     ],
-                    modalClass: "modal add-note"
+                    windowClass: "modal add-note"
                 };
 
-            return DialogService.open(opts, note);
+            return DialogService.open(opts, scope);
         }
 
         this.openAddNewCategory = function(category) {
@@ -74,7 +75,7 @@ angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogServ
                             }
                         }
                     ],
-                    modalClass: "modal add-category"
+                    windowClass: "modal add-category"
                 };
 
             return DialogService.open(opts, category);
