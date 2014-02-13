@@ -7,16 +7,6 @@ module.exports = function (grunt) {
 
     // configurable paths
     var gruntConfig = {
-        paths: {
-            app: 'app',
-            vendor: 'vendor',
-            log: 'log',
-            build: 'build',
-            build_log: 'build_log',
-            compile: 'bin',
-            server: 'server',
-            root: __dirname
-        },
         pkg: grunt.file.readJSON('package.json'),
         buildClient: {
             production: [
@@ -47,27 +37,27 @@ module.exports = function (grunt) {
             build: ['<%= paths.build %>']
         },
         copy: {
-            // build_app_assets: {
-            //     files: [
-            //         {
-            //             src: [ '**' ],
-            //             dest: '<%= paths.build %>',
-            //             cwd: '<%= paths.app %>/',
-            //             expand: true
-            //         }
-            //     ]
-            // },
-            // build_vendor_assets: {
-            //     files: [
-            //         {
-            //             src: [ '<%= vendor_files.assets %>' ],
-            //             dest: '<%= paths.build %>/vendor',
-            //             cwd: '<%= paths.root %>',
-            //             expand: true,
-            //             flatten: true
-            //         }
-            //     ]
-            // },
+            build_app_assets: {
+                files: [
+                    {
+                        src: [ '**' ],
+                        dest: '<%= paths.build %>/assets',
+                        cwd: '<%= paths.app %>/assets',
+                        expand: true
+                    }
+                ]
+            },
+            build_vendor_assets: {
+                files: [
+                    {
+                        src: [ '<%= vendor_files.assets %>' ],
+                        dest: '<%= paths.build %>/vendor',
+                        cwd: '<%= paths.root %>',
+                        expand: true,
+                        flatten: true
+                    }
+                ]
+            },
             build_appjs: {
                 files: [
                     {
@@ -78,16 +68,16 @@ module.exports = function (grunt) {
                     }
                 ]
             },
-            // build_vendor_js: {
-            //     files: [
-            //         {
-            //             src: [ '<%= vendor_files.js %>' ],
-            //             dest: '<%= paths.build %>/vendor',
-            //             cwd: '<%= paths.vendor %>',
-            //             expand: true
-            //         }
-            //     ]
-            // },
+            build_vendor_js: {
+                files: [
+                    {
+                        src: [ '<%= vendor_files.js %>' ],
+                        dest: '<%= paths.build %>/vendor',
+                        cwd: '<%= paths.vendor %>',
+                        expand: true
+                    }
+                ]
+            },
         },
 
         jshint: {
@@ -139,17 +129,19 @@ module.exports = function (grunt) {
              */
             build: {
                 dir: '<%= paths.build %>',
-                src: [
-                    '<%= vendor_files.js %>',
-                    '<%= app_files.js %>',
-                    '<%= app_files.css %>',
-                    //'<%= paths.build %>/**/*.js',
-                    //'<%= paths.build %>/src/app/*.modules.js',
-                    //'<%= paths.build %>/src/**/*.js',
-                    //'<%= html2js.common.dest %>',
-                    //'<%= html2js.app.dest %>',
-                    //'<%= vendor_files.css %>',
-                    //'<%= recess.build.dest %>'
+                files: [
+                    {
+                        src:'<%= vendor_files.js %>',
+                        cwd:'<%= paths.vendor %>',
+                        expand: true
+                    },
+                    {
+                        src: [
+                            '<%= app_files.js %>',
+                            '<%= app_files.css %>'
+                        ],
+                        cwd:'<%= paths.app %>'
+                    }
                 ]
             },
         },
@@ -188,17 +180,19 @@ module.exports = function (grunt) {
 
             jssrc: {
                 files: [
-                    '<%= app_files.js %>'
+                    '<%= app_files.js %>',
                 ],
+                cwd: '<%= paths.app %>',
                 tasks: [ 'jshint:jshint:src', 'karma:unit:run', 'copy:build_appjs' ]
             },
 
-            // assets: {
-            //     files: [
-            //         'src/assets/**/*'
-            //     ],
-            //     tasks: [ 'copy:build_assets' ]
-            // },
+            assets: {
+                files: [
+                    '<%= app_files.assets%>'
+                ],
+                cwd: '<%= paths.app %>',
+                tasks: [ 'copy:build_assets' ]
+            },
 
             // html: {
             //     files: [ '<%= app_files.html %>' ],
@@ -237,7 +231,7 @@ module.exports = function (grunt) {
      * before watching for changes.
      */
     grunt.renameTask('watch', 'delta');
-    grunt.registerTask('watch', [ 'buildClient:dev', 'server', /*'karma:unit',*/ 'delta'  ]);
+    grunt.registerTask('watch', [ 'buildClient:dev', 'delta', 'server', /*'karma:unit',*/   ]);
 
     grunt.registerTask('default', ['watch']);
 /*
@@ -287,8 +281,8 @@ module.exports = function (grunt) {
 
         var lessFiles = find.fileSync(/theme\.less$/, grunt.config.data.paths.app);
 
-        lessFiles.push(path.normalize(grunt.config.data.paths.app + '/resources/css/third-party.less'));
-        lessFiles.push(path.normalize(grunt.config.data.paths.app + '/app/resources/css/note.less'));
+        lessFiles.push(path.normalize(grunt.config.data.paths.app + '/assets/css/third-party.less'));
+        lessFiles.push(path.normalize(grunt.config.data.paths.app + '/app/assets/css/note.less'));
         var size = lessFiles.length;
         var options = {
             paths: [],

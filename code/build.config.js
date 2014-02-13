@@ -2,6 +2,16 @@
  * This file/module contains all configuration for the build process.
  */
 module.exports = {
+    paths: {
+            app: 'app',
+            vendor: 'vendor',
+            log: 'log',
+            build: 'build',
+            build_log: 'build_log',
+            compile: 'bin',
+            server: 'server',
+            root: __dirname
+        },
     app_files: {
         js: [
             '*.js',
@@ -9,10 +19,10 @@ module.exports = {
             'modules/*/**/*.js'
         ],
         css: [
-            'vendor/jquery-ui/themes/base/jquery-ui.css',
-            'vendor/select2/select2.css',
-            'resources/css/third-party.css',
-            'resources/css/note.css'
+            'assets/css/third-party.css',
+            'assets/css/note.css'
+        ],
+        assets: [
         ]
     },
     vendor_files: {
@@ -35,6 +45,8 @@ module.exports = {
             'angular-ui-tinymce/src/tinymce.js'
         ],
         css: [
+            'jquery-ui/themes/base/jquery-ui.css',
+            'select2/select2.css'
         ],
         assets: []
     }
