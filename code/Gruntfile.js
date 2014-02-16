@@ -12,6 +12,7 @@ module.exports = function (grunt) {
             production: [
                 'clean:build_log',
                 'clean:build',
+                'html2js',
                 'copy:build_app_assets',
                 'copy:build_vendor_assets',
                 'copy:build_app_js',
@@ -25,6 +26,7 @@ module.exports = function (grunt) {
             dev: [
                 'clean:build_log',
                 'clean:build',
+                'html2js',
                 'copy:build_app_assets',
                 'copy:build_vendor_assets',
                 'copy:build_app_js',
@@ -94,6 +96,24 @@ module.exports = function (grunt) {
                 jshintrc: '.jshintrc'
             }
         },
+        /**
+         * HTML2JS is a Grunt plugin that takes all of your template files and
+         * places them into JavaScript files as strings that are added to
+         * AngularJS's template cache. This means that the templates too become
+         * part of the initial payload as one JavaScript file. Neat!
+         */
+        html2js: {
+            /**
+             * These are the templates from `app`.
+             */
+            app: {
+                options: {
+                    base: 'app'
+                },
+                src: [ '<%= app_files.atpl %>' ],
+                dest: '<%= paths.build %>/templates-app.js'
+            }
+        },
         plato: {
             // Production profile runs yslow with a custom server (Jenkins starts this server on its own)
             options: {
@@ -142,7 +162,7 @@ module.exports = function (grunt) {
                             '<%= app_files.js %>',
                             '<%= app_files.css %>'
                         ],
-                        cwd:'<%= paths.app %>'
+                        cwd:'<%= paths.build %>'
                     }
                 ]
             },

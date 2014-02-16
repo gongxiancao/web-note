@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('note', ['ui', 'platform', 'ngResource', 'ui.router']).
+angular.module('note', ['ui', 'platform', 'ngResource', 'ui.router', 'templates-app']).
     config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/welcome");
     $stateProvider.

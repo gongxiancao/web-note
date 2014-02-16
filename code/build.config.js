@@ -23,7 +23,8 @@ module.exports = {
             'assets/css/note.css'
         ],
         assets: [
-        ]
+        ],
+        atpl: [ 'app/**/*.tpl.html' ]
     },
     vendor_files: {
         js: [
