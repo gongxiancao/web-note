@@ -14,6 +14,7 @@ module.exports = function (grunt) {
                 'clean:build',
                 'copy:build_app_assets',
                 'copy:build_vendor_assets',
+                'copy:build_app_js',
                 'copy:build_vendor_js',
                 'less2css',
                 'jshint',
@@ -26,6 +27,7 @@ module.exports = function (grunt) {
                 'clean:build',
                 'copy:build_app_assets',
                 'copy:build_vendor_assets',
+                'copy:build_app_js',
                 'copy:build_vendor_js',
                 'less2css:dev',
                 'jshint',
@@ -58,7 +60,7 @@ module.exports = function (grunt) {
                     }
                 ]
             },
-            build_appjs: {
+            build_app_js: {
                 files: [
                     {
                         src: [ '<%= app_files.js %>' ],
@@ -231,7 +233,7 @@ module.exports = function (grunt) {
      * before watching for changes.
      */
     grunt.renameTask('watch', 'delta');
-    grunt.registerTask('watch', [ 'buildClient:dev', 'delta', 'server', /*'karma:unit',*/   ]);
+    grunt.registerTask('watch', [ 'buildClient:dev', 'server', 'delta', /*'karma:unit',*/   ]);
 
     grunt.registerTask('default', ['watch']);
 /*
@@ -338,7 +340,7 @@ module.exports = function (grunt) {
         });
     });
 
-    grunt.registerTask('server', 'Start a custom web server.', function() {
+    grunt.registerTask('server', 'Start server.', function() {
         require(grunt.config.data.paths.root + '/' + grunt.config.data.paths.server + '/server.js');
     });
 

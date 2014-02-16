@@ -43,3 +43,5 @@ var dataServer = require('./data-server'),
             });
         })
     });
+
+module.exports = app;
