@@ -56,9 +56,8 @@ module.exports = function (grunt) {
                     {
                         src: [ '<%= vendor_files.assets %>' ],
                         dest: '<%= paths.build %>/vendor',
-                        cwd: '<%= paths.root %>',
-                        expand: true,
-                        flatten: true
+                        cwd: '<%= paths.vendor %>',
+                        expand: true
                     }
                 ]
             },
@@ -229,10 +228,10 @@ module.exports = function (grunt) {
             //     tasks: [ 'html2js' ]
             // },
 
-            // less: {
-            //     files: [ 'app/**/*.less' ],
-            //      tasks: [ 'less2css' ]
-            // }
+            less: {
+                files: [ 'app/**/*.less' ],
+                 tasks: [ 'less2css' ]
+            }
 
         }
     };
@@ -304,7 +303,8 @@ module.exports = function (grunt) {
         var lessFiles = find.fileSync(/theme\.less$/, grunt.config.data.paths.app);
 
         lessFiles.push(path.normalize(grunt.config.data.paths.app + '/assets/css/third-party.less'));
-        lessFiles.push(path.normalize(grunt.config.data.paths.app + '/app/assets/css/note.less'));
+        lessFiles.push(path.normalize(grunt.config.data.paths.app + '/assets/css/note.less'));
+
         var size = lessFiles.length;
         var options = {
             paths: [],
@@ -326,6 +326,7 @@ module.exports = function (grunt) {
                 files[grunt.config.data.paths.build + '/' + cssFile] = lessFile;
             }
         }
+        console.log(files);
         grunt.config.set('less', {build: {options: options, files: files}});
         grunt.task.run('less');
     });
@@ -346,7 +347,7 @@ module.exports = function (grunt) {
         var cssFiles = filterForCSS(this.filesSrc).map(function(file) {
             return file.replace(dirRE, '');
         });
-
+        console.log(cssFiles);
         grunt.file.copy('app/index.html', this.data.dir + '/index.html', {
             process: function(contents) {
                 return grunt.template.process(contents, {

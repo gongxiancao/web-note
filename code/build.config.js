@@ -43,12 +43,15 @@ module.exports = {
             'nvd3/nv.d3.js',
             'angular-translate/angular-translate.js',
             'angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+            'tinymce/tinymce.min.js',
             'angular-ui-tinymce/src/tinymce.js'
         ],
         css: [
             'jquery-ui/themes/base/jquery-ui.css',
             'select2/select2.css'
         ],
-        assets: []
+        assets: [
+            'tinymce/**/*'
+        ]
     }
 };
