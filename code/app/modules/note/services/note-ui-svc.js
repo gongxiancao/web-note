@@ -17,10 +17,11 @@ angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogServ
                             label: 'Save',
                             primary: true,
                             disabled: UtilityService.$false,
-                            handler: function (note) {
-                                this.close(note);
+                            handler: function () {
+                                this.close();
+                                var note = scope.model;
                                 NoteEntity.save(note).$promise.then(
-                                    function (note) {
+                                    function () {
                                         $rootScope.$broadcast(that.newNoteAdded, note);
                                     },
                                     function (err) {
@@ -40,7 +41,7 @@ angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogServ
                     ],
                     windowClass: "modal add-note"
                 };
-
+            scope.model = {};
             return DialogService.open(opts, scope);
         }
 

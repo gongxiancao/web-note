@@ -25,6 +25,7 @@ var dataServer = require('./data-server'),
                 console.error(err);
                 return;
             }
+            app.use(express.bodyParser());
             dataServer.config(app, options, function (err) {
                 if(err) {
                     console.error(err);

@@ -5,10 +5,7 @@ angular.module('note')
         return $resource(
             'api/notes/:id',
             {id: '@id'},
-            {
-                create: {method: 'POST'},
-                update: {method: 'PUT'}
-            }
+            {}
         );
     }])
 ;

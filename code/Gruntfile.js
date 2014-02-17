@@ -326,7 +326,7 @@ module.exports = function (grunt) {
                 files[grunt.config.data.paths.build + '/' + cssFile] = lessFile;
             }
         }
-        console.log(files);
+
         grunt.config.set('less', {build: {options: options, files: files}});
         grunt.task.run('less');
     });
