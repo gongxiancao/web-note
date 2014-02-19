@@ -28,15 +28,8 @@ module.exports = {
         });
 
         app.post('/api/notes', function(req, res){
-            console.log('*enter createNote*');
-            dal(req.ctx).createNote(req.body, function (err, item) {
-                res.json(item);
-            });
-        });
-
-        app.put('/api/notes/:id', function(req, res){
-            console.log('*enter updateNote*');
-            dal(req.ctx).updateNote(req.params.id, req.body, function (err, item) {
+            console.log('*enter saveNoteNote*');
+            dal(req.ctx).saveNote(req.body, function (err, item) {
                 res.json(item);
             });
         });

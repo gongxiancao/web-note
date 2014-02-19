@@ -18,20 +18,6 @@ angular.module('note').controller('NoteToolbarCtrl', ['$scope', 'CategoryService
                 }
             },
             {
-                name: 'add', localized_label: 'Add category', 
-                actionHandler: function () {
-                    var category = new CategoryService.Category();
-                    NoteUiService.openAddNewCategory(category).then(
-                        function (category) {
-                            console.log(category);
-                        },
-                        function (err) {
-                            throw err;
-                        }
-                    );
-                }
-            },
-            {
                 name: 'edit', localized_label: 'Edit',
                 actionHandler: function () {
                     

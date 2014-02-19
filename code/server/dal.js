@@ -44,6 +44,12 @@ module.exports = function (ctx) {
                     done(null, item);
                 });
             },
+            saveNote: function (note, done) {
+                if(note.id) {
+                    return this.updateNote(note, done);
+                }
+                return this.createNote(note, done);
+            },
             deleteNote: function (id, done) {
                 var index = -1;
                 _.find(function (item, i) {
