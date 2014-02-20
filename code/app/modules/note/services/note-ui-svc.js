@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogService', 'NoteEntity', 'CategoryService', 'UtilityService',
-    function ($rootScope, $q, DialogService, NoteEntity, CategoryService, UtilityService) {
+angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogService', 'NoteEntity', 'UtilityService',
+    function ($rootScope, $q, DialogService, NoteEntity, UtilityService) {
         this.newNoteAdded = 'newNoteAdded';
 
         this.openAddNewNote = function(note) {
