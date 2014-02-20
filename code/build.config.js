@@ -14,13 +14,13 @@ module.exports = {
         },
     app_files: {
         js: [
-            '*.js',
-            'modules/*/*.js',
-            'modules/*/**/*.js'
+            'app/*.js',
+            'app/modules/*/*.js',
+            'app/modules/*/**/*.js'
         ],
         css: [
-            'assets/css/third-party.css',
-            'assets/css/note.css'
+            'app/assets/css/third-party.css',
+            'app/assets/css/note.css'
         ],
         assets: [
         ],
@@ -28,30 +28,32 @@ module.exports = {
     },
     vendor_files: {
         js: [
-            'jquery/jquery.js',
-            'lodash/dist/lodash.js',
-            'angular/angular.js',
-            'jquery-ui/ui/jquery-ui.js',
-            'angular-animate/angular-animate.js',
-            'angular-ui-utils/modules/route/route.js',
-            'angular-ui-router/release/angular-ui-router.js',
-            'ng-grid/ng-grid-2.0.7.debug.js',
-            'log4javascript/log4javascript.js',
-            'angular-resource/angular-resource.js',
-            'angular-bootstrap/ui-bootstrap-tpls.js',
-            'd3/d3.js',
-            'nvd3/nv.d3.js',
-            'angular-translate/angular-translate.js',
-            'angular-translate-loader-static-files/angular-translate-loader-static-files.js',
-            'tinymce/tinymce.min.js',
-            'angular-ui-tinymce/src/tinymce.js'
+            'vendor/jquery/jquery.js',
+            'vendor/lodash/dist/lodash.js',
+            'vendor/angular/angular.js',
+            'vendor/jquery-ui/ui/jquery-ui.js',
+            'vendor/angular-animate/angular-animate.js',
+            'vendor/angular-ui-utils/modules/route/route.js',
+            'vendor/angular-ui-router/release/angular-ui-router.js',
+            'vendor/ng-grid/ng-grid-2.0.7.debug.js',
+            'vendor/log4javascript/log4javascript.js',
+            'vendor/angular-resource/angular-resource.js',
+            'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
+            'vendor/d3/d3.js',
+            'vendor/nvd3/nv.d3.js',
+            'vendor/angular-translate/angular-translate.js',
+            'vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+            'vendor/tinymce/tinymce.min.js',
+            'vendor/tinymce/themes/modern/theme.min.js',
+            'vendor/angular-ui-tinymce/src/tinymce.js'
         ],
         css: [
-            'jquery-ui/themes/base/jquery-ui.css',
-            'select2/select2.css'
+            'vendor/jquery-ui/themes/base/jquery-ui.css',
+            'vendor/select2/select2.css',
+            'vendor/tinymce/**/*.css'
         ],
         assets: [
-            'tinymce/**/*'
+            'vendor/tinymce/**/*.gif'
         ]
     }
 };

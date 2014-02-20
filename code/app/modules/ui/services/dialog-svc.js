@@ -19,6 +19,6 @@ angular.module('ui').service('DialogService', ['$rootScope', '$modal',
                 opts.templateUrl = 'modules/ui/templates/dialog.tpl.html';
             }
             return $modal.open(opts).result;
-        }
+        };
     }
 ]);

@@ -1,3 +1,5 @@
+'use strict';
+
 var dal = require('./dal');
 
 module.exports = {

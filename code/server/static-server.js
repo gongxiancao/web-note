@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 
 module.exports = {
@@ -20,4 +22,4 @@ module.exports = {
         app.use(express.methodOverride());
         done();
     }
-}
+};

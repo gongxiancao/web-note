@@ -1,5 +1,7 @@
-angular.module('platform').service('ConfigurationService', ['$rootScope', '$q',
-    function ($rootScope, $q) {
+'use strict';
+
+angular.module('platform').service('ConfigurationService', [
+    function () {
         var configuration = {
 
         };

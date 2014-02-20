@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('note').controller('NoteToolbarCtrl', ['$scope', 'CategoryService', 'NoteUiService',
-    function ($scope, CategoryService, NoteUiService) {
+angular.module('note').controller('NoteToolbarCtrl', ['$scope', 'NoteUiService',
+    function ($scope, NoteUiService) {
         $scope.buttons = [
             {
-                name: 'add', localized_label: 'Add note', 
+                name: 'add',
+                localized_label: 'Add note',
                 actionHandler: function () {
                     var note = {};
                     NoteUiService.openAddNewNote(note).then(
@@ -18,7 +19,8 @@ angular.module('note').controller('NoteToolbarCtrl', ['$scope', 'CategoryService
                 }
             },
             {
-                name: 'edit', localized_label: 'Edit',
+                name: 'edit',
+                localized_label: 'Edit',
                 actionHandler: function () {
                     
                 }

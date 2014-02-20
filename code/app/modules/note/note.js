@@ -2,7 +2,7 @@
 
 angular.module('note', ['ui', 'platform', 'ngResource', 'ui.router', 'templates-app']).
     config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/welcome");
+    $urlRouterProvider.otherwise('/notes');
     $stateProvider.
         state('notes', {
             url: '/notes',

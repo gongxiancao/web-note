@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('note').directive('noteList', [function () {
     return {
         restrict: 'EA',
@@ -7,7 +9,7 @@ angular.module('note').directive('noteList', [function () {
             actionHandler: '&',
             options: '='
         },
-        link: function (scope, element, attr, controller) {
+        link: function (/*scope, element, attr, controller*/) {
         }
     };
 }]);

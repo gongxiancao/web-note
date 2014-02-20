@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function (ctx) {
     function createConStr(ctx) {
 
@@ -8,13 +10,13 @@ module.exports = function (ctx) {
             port = '5432',
             db = 'postgres';
 
-        ctx.constr = "postgres://"+tenant+":"+pwd+"@"+host+":"+port+"/"+db;
+        ctx.constr = 'postgres://' + tenant + ':' + pwd + '@' + host + ':' + port + '/' + db;
         return ctx.constr;
     }
 
     createConStr(ctx);
 
-    var db = require('pg'),
+    var //db = require('pg'),
         _ = require('underscore'),
         mockNoteTable = require('./mock-data/note.json'),
         $this = {
@@ -36,7 +38,7 @@ module.exports = function (ctx) {
                 done(null, note);
             },
             updateNote: function (note, done) {
-                getNote(ctx.user, note.id, function (err, item) {
+                $this.getNote(ctx.user, note.id, function (err, item) {
                     if(item) {
                         item.subject = note.subject.
                         item.content = note.content;
@@ -65,5 +67,5 @@ module.exports = function (ctx) {
             }
         };
 
-   return $this;
-}
+    return $this;
+};

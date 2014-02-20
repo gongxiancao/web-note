@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('note').controller('NoteListCtrl', ['$scope', 'LoggerService', 'NoteUiService', 'NoteEntity',
-    function ($scope, LoggerService, NoteUiService, NoteEntity) {
+angular.module('note').controller('NoteListCtrl', ['$scope', 'NoteUiService', 'NoteEntity',
+    function ($scope, NoteUiService, NoteEntity) {
         NoteEntity.query().$promise.then(function (data) {
             $scope.notes = data;
         });

@@ -1,11 +1,10 @@
 'use strict';
 
-
 angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogService', 'NoteEntity', 'UtilityService',
     function ($rootScope, $q, DialogService, NoteEntity, UtilityService) {
         this.newNoteAdded = 'newNoteAdded';
 
-        this.openAddNewNote = function(note) {
+        this.openAddNewNote = function() {
             var that = this,
                 scope = $rootScope.$new(),
                 opts = {
@@ -38,10 +37,10 @@ angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogServ
                             }
                         }
                     ],
-                    windowClass: "modal add-note"
+                    windowClass: 'modal add-note'
                 };
             scope.model = {};
             return DialogService.open(opts, scope);
-        }
-
-}]);
+        };
+    }
+]);

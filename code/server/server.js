@@ -1,6 +1,8 @@
+'use strict';
+
 var dataServer = require('./data-server'),
     staticServer = require('./static-server'),
-    fullDir = require('path').resolve(__dirname + "/../build"),
+    fullDir = require('path').resolve(__dirname + '/../build'),
     express = require('express'),
     app = express(),
     argv = require('optimist')
@@ -13,36 +15,36 @@ var dataServer = require('./data-server'),
     .argv,
     options = {production: argv.production, port: 8421, path: fullDir};
 
-    console.info('Setting up server');
+console.info('Setting up server');
 
-    dataServer.initialize(options, function (err) {
+dataServer.initialize(options, function (err) {
+    if(err) {
+        console.error(err);
+        return;
+    }
+    staticServer.initialize(options, function (err) {
         if(err) {
             console.error(err);
             return;
         }
-        staticServer.initialize(options, function (err) {
+        app.use(express.bodyParser());
+        dataServer.config(app, options, function (err) {
             if(err) {
                 console.error(err);
                 return;
             }
-            app.use(express.bodyParser());
-            dataServer.config(app, options, function (err) {
+            staticServer.config(app, options, function (err) {
                 if(err) {
                     console.error(err);
                     return;
                 }
-                staticServer.config(app, options, function (err) {
-                    if(err) {
-                        console.error(err);
-                        return;
-                    }
 
-                    // launch the application
-                    app.listen(options.port);
-                    console.info('Starting server on port ' + options.port + ' at ' + options.path);
-                })
+                // launch the application
+                app.listen(options.port);
+                console.info('Starting server on port ' + options.port + ' at ' + options.path);
             });
-        })
+        });
     });
+});
 
 module.exports = app;

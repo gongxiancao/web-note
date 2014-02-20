@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('note').controller('NoteSearchCtrl', ['$scope', 'LoggerService', 'NoteUiService',
-    function ($scope, LoggerService, NoteUiService) {
+angular.module('note').controller('NoteSearchCtrl', ['$scope',
+    function ($scope) {
         $scope.addAlert = function() {
 
         };

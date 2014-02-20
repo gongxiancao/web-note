@@ -12,11 +12,11 @@ module.exports = function (grunt) {
             production: [
                 'clean:build_log',
                 'clean:build',
-                'html2js',
                 'copy:build_app_assets',
                 'copy:build_vendor_assets',
                 'copy:build_app_js',
                 'copy:build_vendor_js',
+                'html2js',
                 'less2css',
                 'jshint',
                 'index'
@@ -26,11 +26,11 @@ module.exports = function (grunt) {
             dev: [
                 'clean:build_log',
                 'clean:build',
-                'html2js',
                 'copy:build_app_assets',
                 'copy:build_vendor_assets',
                 'copy:build_app_js',
                 'copy:build_vendor_js',
+                'html2js',
                 'less2css:dev',
                 'jshint',
                 'index'
@@ -44,9 +44,9 @@ module.exports = function (grunt) {
             build_app_assets: {
                 files: [
                     {
-                        src: [ '**' ],
-                        dest: '<%= paths.build %>/assets',
-                        cwd: '<%= paths.app %>/assets',
+                        src: [ '<%= app_files.css %>' ],
+                        dest: '<%= paths.build %>',
+                        cwd: '.',
                         expand: true
                     }
                 ]
@@ -54,9 +54,12 @@ module.exports = function (grunt) {
             build_vendor_assets: {
                 files: [
                     {
-                        src: [ '<%= vendor_files.assets %>' ],
-                        dest: '<%= paths.build %>/vendor',
-                        cwd: '<%= paths.vendor %>',
+                        src: [
+                            '<%= vendor_files.css %>',
+                            '<%= vendor_files.assets %>'
+                        ],
+                        dest: '<%= paths.build %>',
+                        cwd: '.',
                         expand: true
                     }
                 ]
@@ -65,8 +68,8 @@ module.exports = function (grunt) {
                 files: [
                     {
                         src: [ '<%= app_files.js %>' ],
-                        dest: '<%= paths.build %>/',
-                        cwd: '<%= paths.app %>/',
+                        dest: '<%= paths.build %>',
+                        cwd: '.',
                         expand: true
                     }
                 ]
@@ -75,8 +78,8 @@ module.exports = function (grunt) {
                 files: [
                     {
                         src: [ '<%= vendor_files.js %>' ],
-                        dest: '<%= paths.build %>/vendor',
-                        cwd: '<%= paths.vendor %>',
+                        dest: '<%= paths.build %>',
+                        cwd: '.',
                         expand: true
                     }
                 ]
@@ -84,9 +87,15 @@ module.exports = function (grunt) {
         },
 
         jshint: {
-            all: [
-                '<%= paths.app %>/js/**/*.js',
-                '<%= paths.server/**/*.js'
+            gruntfile: [
+                'Gruntfile.js'
+            ],
+            app: [
+                '<%= paths.app %>/**/*.js'
+            ],
+            server: [
+                '<%= paths.server %>/**/*.js',
+                '!<%= paths.server %>/node_modules/**/*.js'
             ],
 
             options: {
@@ -110,7 +119,7 @@ module.exports = function (grunt) {
                     base: 'app'
                 },
                 src: [ '<%= app_files.atpl %>' ],
-                dest: '<%= paths.build %>/templates-app.js'
+                dest: '<%= paths.build %>/app/templates-app.js'
             }
         },
         plato: {
@@ -152,12 +161,9 @@ module.exports = function (grunt) {
                 dir: '<%= paths.build %>',
                 files: [
                     {
-                        src:'<%= vendor_files.js %>',
-                        cwd:'<%= paths.vendor %>',
-                        expand: true
-                    },
-                    {
                         src: [
+                            '<%= vendor_files.js %>',
+                            '<%= vendor_files.css %>',
                             '<%= app_files.js %>',
                             '<%= app_files.css %>'
                         ],
@@ -193,7 +199,7 @@ module.exports = function (grunt) {
              */
             gruntfile: {
                 files: 'Gruntfile.js',
-                tasks: [ 'jshint:jshint:gruntfile' ],
+                tasks: [ 'jshint:gruntfile' ],
                 options: {
                     livereload: false
                 }
@@ -203,15 +209,15 @@ module.exports = function (grunt) {
                 files: [
                     '<%= app_files.js %>',
                 ],
-                cwd: '<%= paths.app %>',
-                tasks: [ 'jshint:jshint:src', 'karma:unit:run', 'copy:build_appjs' ]
+                cwd: '.',
+                tasks: [ 'jshint:app'/*, 'karma:unit:run'*/, 'copy:build_app_js' ]
             },
 
             assets: {
                 files: [
                     '<%= app_files.assets%>'
                 ],
-                cwd: '<%= paths.app %>',
+                cwd: '.',
                 tasks: [ 'copy:build_assets' ]
             },
 
@@ -230,7 +236,7 @@ module.exports = function (grunt) {
 
             less: {
                 files: [ 'app/**/*.less' ],
-                 tasks: [ 'less2css' ]
+                tasks: [ 'less2css' ]
             }
 
         }
@@ -347,7 +353,7 @@ module.exports = function (grunt) {
         var cssFiles = filterForCSS(this.filesSrc).map(function(file) {
             return file.replace(dirRE, '');
         });
-        console.log(cssFiles);
+
         grunt.file.copy('app/index.html', this.data.dir + '/index.html', {
             process: function(contents) {
                 return grunt.template.process(contents, {
