@@ -226,13 +226,14 @@ module.exports = function (grunt) {
             //     tasks: [ 'index:build' ]
             // },
 
-            // tpls: {
-            //     files: [
-            //         '<%= app_files.atpl %>',
-            //         '<%= app_files.ctpl %>'
-            //     ],
-            //     tasks: [ 'html2js' ]
-            // },
+            tpls: {
+                files: [
+                    '<%= app_files.atpl %>'
+                    //'<%= app_files.ctpl %>'
+                ],
+                cwd: '.',
+                tasks: [ 'html2js' ]
+            },
 
             less: {
                 files: [ 'app/**/*.less' ],

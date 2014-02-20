@@ -1,0 +1,7 @@
+
+<li ng-repeat="node in node.nodes">
+    <a href>{{node.label}}</a>
+    <ul>
+        <ng-include src="'modules/ui/templates/tree-nodes.tpl.html'"></ng-include>
+    </ul>
+</li>

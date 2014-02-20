@@ -1,4 +1,4 @@
 'use strict';
 
-angular.module('ui', ['ui.bootstrap','ui.tinymce']);
+angular.module('ui', ['ui.bootstrap','ui.tinymce', 'templates-app']);
 
