@@ -8,6 +8,14 @@ angular.module('note')
             {}
         );
     }])
+    .factory('NoteTreeEntity', ['$resource', function ($resource) {
+        return $resource(
+            'api/note-trees',
+            {},
+            {}
+        );
+    }])
+
 ;
 
 

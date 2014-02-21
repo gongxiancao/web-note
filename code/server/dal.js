@@ -1,5 +1,9 @@
 'use strict';
 
+var //db = require('pg'),
+    _ = require('underscore'),
+    mockNoteTable = require('./mock-data/note.json');
+
 module.exports = function (ctx) {
     function createConStr(ctx) {
 
@@ -16,10 +20,7 @@ module.exports = function (ctx) {
 
     createConStr(ctx);
 
-    var //db = require('pg'),
-        _ = require('underscore'),
-        mockNoteTable = require('./mock-data/note.json'),
-        $this = {
+    var $this = {
             getNote: function (id, done) {
                 var item = _.find(mockNoteTable, function (item) {
                     return item.created_by === ctx.user && item.id === id;

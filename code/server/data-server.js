@@ -1,6 +1,6 @@
 'use strict';
 
-var dal = require('./dal');
+var notes = require('./notes');
 
 module.exports = {
     initialize: function (options, done) {
@@ -17,28 +17,35 @@ module.exports = {
 
         app.get('/api/notes', function(req, res){
             console.log('*enter queryNotes*');
-            dal(req.ctx).queryNotes(function (err, items) {
+            notes(req.ctx).queryNotes(function (err, items) {
+                res.json(items);
+            });
+        });
+
+        app.get('/api/note-trees', function(req, res){
+            console.log('*enter getNoteTrees*');
+            notes(req.ctx).getNoteTrees(function (err, items) {
                 res.json(items);
             });
         });
 
         app.get('/api/notes/:id', function (req, res) {
             console.log('*enter getNote*');
-            dal(req.ctx).getNote(req.params.id, function (err, item) {
+            notes(req.ctx).getNote(req.params.id, function (err, item) {
                 res.json(item);
             });
         });
 
         app.post('/api/notes', function(req, res){
             console.log('*enter saveNoteNote*');
-            dal(req.ctx).saveNote(req.body, function (err, item) {
+            notes(req.ctx).saveNote(req.body, function (err, item) {
                 res.json(item);
             });
         });
 
         app.del('/api/notes/:id', function(req, res){
             console.log('*enter deleteNote*');
-            dal(req.ctx).deleteNote(req.params.id, function (err, item) {
+            notes(req.ctx).deleteNote(req.params.id, function (err, item) {
                 res.json(item);
             });
         });

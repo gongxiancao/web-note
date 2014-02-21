@@ -48,7 +48,7 @@
     "jquery"        : true,
 
     "predef"        : [
-        "__dirname", "console", "angular", "i18n", "log4javascript","Slick", "_", "moment","Chart", "module", "require", "tinymce",
+        "__dirname", "console", "angular", "i18n", "log4javascript","Slick", "moment","Chart", "module", "require", "tinymce",
         "mxGraph", "mxConstants", "mxUtils", "mxStackLayout", "mxLayoutManager", "mxPoint", "mxGraphModel", "mxEvent",
         "mxSwimlaneManager", "mxRectangle", "mxCellRenderer", "mxCellTracker", "mxActor", "mxHierarchicalLayout",
         "mxSwimlaneLayout", "mxPolyline", "mxShape", "XRegExp", "mxEdgeHandler", "nv", "d3"
