@@ -12,12 +12,12 @@ module.exports = function (grunt) {
             production: [
                 'clean:build_log',
                 'clean:build',
+                'less2css',
                 'copy:build_app_assets',
                 'copy:build_vendor_assets',
                 'copy:build_app_js',
                 'copy:build_vendor_js',
                 'html2js',
-                'less2css',
                 'jshint',
                 'index'
                 //'csslint',
@@ -26,12 +26,12 @@ module.exports = function (grunt) {
             dev: [
                 'clean:build_log',
                 'clean:build',
+                'less2css:dev',
                 'copy:build_app_assets',
                 'copy:build_vendor_assets',
                 'copy:build_app_js',
                 'copy:build_vendor_js',
                 'html2js',
-                'less2css:dev',
                 'jshint',
                 'index'
             ]
@@ -311,6 +311,7 @@ module.exports = function (grunt) {
 
         lessFiles.push(path.normalize(grunt.config.data.paths.app + '/assets/css/third-party.less'));
         lessFiles.push(path.normalize(grunt.config.data.paths.app + '/assets/css/note.less'));
+        lessFiles.push(path.normalize(grunt.config.data.paths.app + '/assets/css/ui.less'));
 
         var size = lessFiles.length;
         var options = {

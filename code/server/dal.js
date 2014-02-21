@@ -36,6 +36,7 @@ module.exports = function (ctx) {
             createNote: function (note, done) {
                 mockNoteTable.push(note);
                 note.id = mockNoteTable.length;
+                note.created_by = ctx.user;
                 done(null, note);
             },
             updateNote: function (note, done) {

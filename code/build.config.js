@@ -20,6 +20,7 @@ module.exports = {
         ],
         css: [
             'app/assets/css/third-party.css',
+            'app/assets/css/ui.css',
             'app/assets/css/note.css'
         ],
         assets: [

@@ -22,6 +22,7 @@ module.exports = function (ctx) {
                         parent;
                     _.forEach(items, function (item) {
                         map[item.id] = item;
+                        delete item.children;
                     });
                     _.forEach(items, function (item) {
                         if(item.parent) {

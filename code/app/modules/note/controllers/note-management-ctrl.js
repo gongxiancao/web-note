@@ -1,12 +1,27 @@
 'use strict';
 
-angular.module('note').controller('NoteManagementCtrl', ['$scope', 'NoteTreeEntity',
-    function ($scope, NoteTreeEntity) {
-        function init() {
+angular.module('note').controller('NoteManagementCtrl', ['$scope', 'NoteTreeEntity', 'NoteUiService',
+    function ($scope, NoteTreeEntity, NoteUiService) {
+
+        $scope.noteTreeOptions = {
+            label: 'subject',
+            children: 'children',
+            selectedItems: [],
+            multiSelect: false,
+            nodeClick: function (node) {
+                console.log(node);
+            }
+        };
+
+        function loadNoteTrees() {
             NoteTreeEntity.query(function (trees) {
-                $scope.noteTrees = trees;
+                $scope.noteTreeOptions.data = trees;
             });
         }
-        init();
+
+        loadNoteTrees();
+
+        $scope.$on(NoteUiService.newNoteAdded, loadNoteTrees);
+
     }
 ]);
