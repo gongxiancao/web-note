@@ -18,7 +18,7 @@ module.exports = function (grunt) {
                 'copy:build_app_js',
                 'copy:build_vendor_js',
                 'html2js',
-                'jshint',
+                'jshint:jshint',
                 'index'
                 //'csslint',
                 //'cssmin'
@@ -32,7 +32,7 @@ module.exports = function (grunt) {
                 'copy:build_app_js',
                 'copy:build_vendor_js',
                 'html2js',
-                'jshint',
+                'jshint:jshint',
                 'index'
             ]
         },
@@ -87,21 +87,40 @@ module.exports = function (grunt) {
         },
 
         jshint: {
-            gruntfile: [
-                'Gruntfile.js'
-            ],
-            app: [
-                '<%= paths.app %>/**/*.js'
-            ],
-            server: [
-                '<%= paths.server %>/**/*.js',
-                '!<%= paths.server %>/node_modules/**/*.js'
-            ],
+            jshint_ci: {
+                gruntfile: [
+                    'Gruntfile.js'
+                ],
+                app: [
+                    '<%= paths.app %>/**/*.js'
+                ],
+                server: [
+                    '<%= paths.server %>/**/*.js',
+                    '!<%= paths.server %>/node_modules/**/*.js'
+                ],
 
-            options: {
-                reporter: require('jshint-junit-reporter'),
-                reporterOutput: '<%= paths.build_log %>/reports/lint/jshint-junit.xml',
-                jshintrc: '.jshintrc'
+                options: {
+                    reporter: require('jshint-junit-reporter'),
+                    reporterOutput: '<%= paths.build_log %>/reports/lint/jshint-junit.xml',
+                    jshintrc: '.jshintrc'
+                }
+            },
+            jshint: {
+                gruntfile: [
+                    'Gruntfile.js'
+                ],
+                app: [
+                    '<%= paths.app %>/**/*.js'
+                ],
+                server: [
+                    '<%= paths.server %>/**/*.js',
+                    '!<%= paths.server %>/node_modules/**/*.js'
+                ],
+                options: {
+                    jshintrc: '.jshintrc'
+                },
+
+                globals: {}
             }
         },
         /**

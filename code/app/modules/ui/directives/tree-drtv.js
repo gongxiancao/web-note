@@ -15,9 +15,8 @@ angular.module('ui').directive('tree', [function () {
     return {
         restrict: 'EA',
         templateUrl: 'modules/ui/templates/tree-drtv.tpl.html',
-        controller: 'TreeCtrl',
         scope: {
-            options: '=options'
+            options: '='
         },
         link: function (scope/*, element, attr, controller*/) {
             var options = scope.options;
