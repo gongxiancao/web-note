@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('note').controller('NoteManagementCtrl', ['$scope', 'NoteTreeEntity', 'NoteUiService',
-    function (/*$scope, NoteTreeEntity, NoteUiService*/) {
+angular.module('note').controller('NoteManagementCtrl', [
+    function () {
     }
 ]);

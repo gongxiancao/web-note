@@ -1,0 +1,5 @@
+<div class="dropdown">
+    <div ng-if="!(path && path.length)" class="dropdown-toggle">Select parent</div>
+    <div ng-if="path.length"><span ng-repeat="node in path" class="dropdown-toggle"><span>{{node.subject}}</span><span ng-if="!$last">&gt;</span></span></div>
+    <div class="dropdown-menu"><div note-tree options="options"/></div>
+</div>

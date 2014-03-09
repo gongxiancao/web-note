@@ -218,7 +218,7 @@ module.exports = function (grunt) {
              */
             gruntfile: {
                 files: 'Gruntfile.js',
-                tasks: [ 'jshint:gruntfile' ],
+                tasks: [ 'jshint:jshint:gruntfile' ],
                 options: {
                     livereload: false
                 }
@@ -229,7 +229,7 @@ module.exports = function (grunt) {
                     '<%= app_files.js %>',
                 ],
                 cwd: '.',
-                tasks: [ 'jshint:app'/*, 'karma:unit:run'*/, 'copy:build_app_js' ]
+                tasks: [ 'jshint:jshint:app'/*, 'karma:unit:run'*/, 'copy:build_app_js' ]
             },
 
             assets: {
