@@ -11,7 +11,7 @@
     };
 */
 
-angular.module('ui').directive('noteTree', ['$parse', 'NoteTreeEntity', 'NoteUiService', function ($parse, NoteTreeEntity, NoteUiService) {
+angular.module('ui').directive('noteTree', ['$parse', function ($parse) {
     return {
         restrict: 'EA',
         template: '<div tree options="options"/>',
@@ -22,9 +22,7 @@ angular.module('ui').directive('noteTree', ['$parse', 'NoteTreeEntity', 'NoteUiS
 
             options = options || {};
 
-            scope.options = options;
-
-            angular.extend(options, {
+            scope.options = angular.extend(options, {
                 label: 'subject',
                 children: 'children',
                 selectedItems: [],
@@ -33,16 +31,6 @@ angular.module('ui').directive('noteTree', ['$parse', 'NoteTreeEntity', 'NoteUiS
                     console.log(node);
                 }
             });
-
-            function loadNoteTrees() {
-                NoteTreeEntity.query(function (trees) {
-                    scope.options.data = trees;
-                });
-            }
-
-            loadNoteTrees();
-
-            scope.$on(NoteUiService.newNoteAdded, loadNoteTrees);
         }
     };
 }]);

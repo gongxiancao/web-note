@@ -7,6 +7,7 @@ angular.module('note').directive('noteSelect', ['$parse', 'NoteTreeEntity', func
         scope: true,
         controller: ['$scope', function ($scope) {
             $scope.options = {};
+
         }],
         link: function (scope, element, attr/*, controller*/) {
             var modelGet = $parse(attr.ngModel),
@@ -46,6 +47,26 @@ angular.module('note').directive('noteSelect', ['$parse', 'NoteTreeEntity', func
                     modelSet(scope.$parent, items[0].id);
                 }
             }, true);
+        }
+    };
+}]);
+
+angular.module('note').directive('aroundNoteSelect', ['$parse', 'NoteTreeEntity', function ($parse, NoteTreeEntity) {
+    return {
+        restrict: 'EA',
+        require: '^noteSelect',
+        template:
+        '<span class="dropdown">' +
+            '<span class="dropdown-toggle">{{node.subject}}</span>' +
+            '<div class="dropdown-menu"><div note-tree options="options"/></div>' +
+        '</span>',
+        scope: true,
+        controller: ['$scope', function ($scope) {
+            $scope.options = {};
+        }],
+        link: function (scope, element, attr/*, controller*/) {
+            var modelGet = $parse(attr.ngModel),
+                modelSet = modelGet.assign;
         }
     };
 }]);
