@@ -38,6 +38,7 @@
 .note {
 	height: ~"calc(100% - 15px)";
 	.property-line {
+		clear: both;
 		margin: 10px 0;
 		@label-size: 8;
 		.property-label {
@@ -47,6 +48,10 @@
 		}
 		input {
 			.span-rest(@label-size, 30px);
+		}
+		.property-value {
+			float: left;
+			margin: 5px 10px 5px 0;
 		}
 	}
 

@@ -1,13 +1,15 @@
 <div class="dropdown">
-    <div ng-if="!(path && path.length)" class="dropdown">
-        <div class="dropdown-toggle">Select parent</div>
-        <div class="dropdown-menu"><div note-tree options="options"/></div>
-    </div>
-    <div ng-if="path.length">
-        <span ng-repeat="node in path" class="dropdown">
-            <span class="dropdown-toggle">{{node.subject}}</span>
-            <span ng-if="!$last">/</span>
-            <div class="dropdown-menu"><div note-tree options="options"/></div>
-        </span>
-    </div>
+    <a href="" class="dropdown-toggle">
+        <div>
+            <div ng-if="!(path && path.length)">
+            <div href="">Select parent</div>
+        </div>
+        <div ng-if="path.length">
+            <span ng-repeat="node in path">
+                <span >{{node.subject}}</span>
+                <span ng-if="!$last">/</span>
+            </span>
+        </div>
+    </a>
+    <div class="dropdown-menu"><div note-tree options="options"/></div>
 </div>

@@ -1,13 +1,21 @@
 'use strict';
 
-angular.module('note').directive('noteSelect', ['$parse', 'NoteTreeEntity', function ($parse, NoteTreeEntity) {
+angular.module('note').directive('noteSelect', ['$parse', function ($parse) {
     return {
         restrict: 'EA',
         templateUrl: 'modules/note/templates/note-select.tpl.html',
         scope: true,
-        controller: ['$scope', function ($scope) {
+        controller: ['$scope', 'NoteTreeEntity', 'NoteUiService', function ($scope, NoteTreeEntity, NoteUiService) {
             $scope.options = {};
+            var loadNoteTrees = this.loadNoteTrees = function () {
+                NoteTreeEntity.query(function (trees) {
+                    $scope.options.data = trees;
+                });
+            };
 
+            loadNoteTrees();
+
+            $scope.$on(NoteUiService.newNoteAdded, loadNoteTrees);
         }],
         link: function (scope, element, attr/*, controller*/) {
             var modelGet = $parse(attr.ngModel),
@@ -32,13 +40,16 @@ angular.module('note').directive('noteSelect', ['$parse', 'NoteTreeEntity', func
                 return path.reverse();
             }
 
+            scope.$parent.$watch(modelGet, function (id){
+                if(id && scope.options.data) {
+                    scope.path = buildPath(scope.options.data, id);
+                }
+            });
 
-            scope.$watch(modelGet, function (id){
-                if(id) {
-                    NoteTreeEntity.query().$promise
-                        .then(function(result) {
-                            scope.path = buildPath(result, id);
-                        });
+            scope.$watch('options.data', function (data){
+                var id = modelGet(scope.$parent);
+                if(data && id) {
+                    scope.path = buildPath(scope.options.data, id);
                 }
             });
 
@@ -51,22 +62,3 @@ angular.module('note').directive('noteSelect', ['$parse', 'NoteTreeEntity', func
     };
 }]);
 
-angular.module('note').directive('aroundNoteSelect', ['$parse', 'NoteTreeEntity', function ($parse, NoteTreeEntity) {
-    return {
-        restrict: 'EA',
-        require: '^noteSelect',
-        template:
-        '<span class="dropdown">' +
-            '<span class="dropdown-toggle">{{node.subject}}</span>' +
-            '<div class="dropdown-menu"><div note-tree options="options"/></div>' +
-        '</span>',
-        scope: true,
-        controller: ['$scope', function ($scope) {
-            $scope.options = {};
-        }],
-        link: function (scope, element, attr/*, controller*/) {
-            var modelGet = $parse(attr.ngModel),
-                modelSet = modelGet.assign;
-        }
-    };
-}]);
