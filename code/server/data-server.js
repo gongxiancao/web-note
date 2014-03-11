@@ -31,7 +31,7 @@ module.exports = {
 
         app.get('/api/notes/:id', function (req, res) {
             console.log('*enter getNote*');
-            notes(req.ctx).getNote(req.params.id, function (err, item) {
+            notes(req.ctx).getNote(parseInt(req.params.id), function (err, item) {
                 res.json(item);
             });
         });
