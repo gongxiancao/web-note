@@ -17,20 +17,27 @@ angular.module('ui').directive('noteTree', ['$parse', function ($parse) {
         template: '<div tree options="options"/>',
         scope: true,
         link: function (scope, element, attr) {
-            var optionsGet = $parse(attr.options);
-            var options = optionsGet(scope.$parent);
+            var optionsGet = $parse(attr.options),
+                options = optionsGet(scope.$parent),
+                defaults = {
+                    label: 'subject',
+                    children: 'children',
+                    selectedItems: [],
+                    multiSelect: false,
+                    nodeClick: function (node) {
+                        console.log(node);
+                    }
+                };
 
-            options = options || {};
+            options = angular.extend(defaults, options);
 
-            scope.options = angular.extend(options, {
-                label: 'subject',
-                children: 'children',
-                selectedItems: [],
-                multiSelect: false,
-                nodeClick: function (node) {
-                    console.log(node);
-                }
-            });
+            scope.options = options;
+
+            if(options.data === 'string') {
+                scope.$parent.$watch(options.data, function (data) {
+                    scope[options.data] = data;
+                });
+            }
         }
     };
 }]);

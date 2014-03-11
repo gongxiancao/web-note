@@ -1,6 +1,6 @@
 
 <li ng-repeat="node in node[options.children]">
-    <a ng-click="nodeClick(node)" ng-class="{selected: nodeSelected(node)}" href>{{node[options.label]}}</a>
+    <tree-node></tree-node>
     <ul>
         <ng-include src="'modules/ui/templates/tree-nodes.tpl.html'"></ng-include>
     </ul>

@@ -5,6 +5,7 @@
         children: 'children',
         selectedItems: [],
         multiSelect: false,
+        nodeTemplate: '<a ng-click="nodeClick(node)" ng-class="{selected: nodeSelected(node)}" href>{{node[options.label]}}</a>'
         nodeClick: function (node) {
             console.log(node);
         }
@@ -19,14 +20,22 @@ angular.module('ui').directive('tree', [function () {
             options: '='
         },
         link: function (scope/*, element, attr, controller*/) {
-            var options = scope.options;
+            var options = scope.options,
+                defaults = {
+                    selectedItems: [],
+                    nodeTemplate: '<a ng-click="nodeClick(node)" ng-class="{selected: nodeSelected(node)}" href>{{node[options.label]}}</a>'
+                };
+
+            options = angular.extend(defaults, options);
 
             scope.node = {};
-            scope.$watch('options.data', function (newValue) {
-                scope.node[options.children] = newValue;
-            });
-
-            options.selectedItems = options.selectedItems || [];
+            if(typeof options.data === 'string') {
+                scope.$parent.$watch(options.data, function (newValue) {
+                    scope.node[options.children] = newValue;
+                });
+            } else {
+                scope.node[options.children] = options.data;
+            }
 
             scope.nodeClick = function (node) {
                 var selectedItems = options.selectedItems,
@@ -49,6 +58,22 @@ angular.module('ui').directive('tree', [function () {
 
             scope.nodeSelected = function (node) {
                 return options.selectedItems.indexOf(node) >= 0;
+            };
+        }
+    };
+}]);
+
+angular.module('ui').directive('treeNode', ['$compile', function ($compile) {
+    return {
+        restrict: 'EA',
+        scope: false,
+        compile: function () {
+            return {
+                pre: function ($scope, iElement) {
+                    if (iElement.children().length === 0) {
+                        iElement.append($compile($scope.options.nodeTemplate)($scope));
+                    }
+                }
             };
         }
     };

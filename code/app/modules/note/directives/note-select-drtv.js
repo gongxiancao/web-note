@@ -6,10 +6,13 @@ angular.module('note').directive('noteSelect', ['$parse', function ($parse) {
         templateUrl: 'modules/note/templates/note-select.tpl.html',
         scope: true,
         controller: ['$scope', 'NoteTreeEntity', 'NoteUiService', function ($scope, NoteTreeEntity, NoteUiService) {
-            $scope.options = {};
+            $scope.options = {
+                data: 'data',
+                selectedItems: []
+            };
             var loadNoteTrees = this.loadNoteTrees = function () {
                 NoteTreeEntity.query(function (trees) {
-                    $scope.options.data = trees;
+                    $scope.data = trees;
                 });
             };
 
@@ -46,7 +49,7 @@ angular.module('note').directive('noteSelect', ['$parse', function ($parse) {
                 }
             });
 
-            scope.$watch('options.data', function (data){
+            scope.$watch('data', function (data){
                 var id = modelGet(scope.$parent);
                 if(data && id) {
                     scope.path = buildPath(scope.options.data, id);

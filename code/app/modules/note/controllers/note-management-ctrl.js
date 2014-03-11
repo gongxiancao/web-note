@@ -2,11 +2,14 @@
 
 angular.module('note').controller('NoteManagementCtrl', ['$scope', 'NoteTreeEntity', 'NoteUiService',
     function ($scope, NoteTreeEntity, NoteUiService) {
-        $scope.options = {};
+        $scope.options = {
+            data: 'noteTree',
+            nodeTemplate: '<a ui-sref="notes.detail({id:node.id})" ng-click="nodeClick(node)" ng-class="{selected: nodeSelected(node)}">{{node[options.label]}}</a>'
+        };
 
         function loadNoteTrees() {
             NoteTreeEntity.query(function (trees) {
-                $scope.options.data = trees;
+                $scope.noteTree = trees;
             });
         }
 
