@@ -22,18 +22,17 @@
 }
 .note .property-line {
   clear: both;
+  display: flex;
   margin: 10px 0;
 }
 .note .property-line .property-label {
-  float: left;
-  width: 80px;
+  flex: 10px;
+  line-height: 30px;
   margin: 5px 10px 5px 0;
 }
-.note .property-line input {
-  width: calc( 100% - 8 * 10px - 30px);
-}
 .note .property-line .property-value {
-  float: left;
+  flex: 10;
+  line-height: 30px;
   margin: 5px 10px 5px 0;
 }
 .note .content {
