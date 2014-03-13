@@ -26,7 +26,7 @@ angular.module('ui').directive('tree', [function () {
                     nodeTemplate: '<a ng-click="nodeClick(node)" ng-class="{selected: nodeSelected(node)}" href>{{node[options.label]}}</a>'
                 };
 
-            options = angular.extend(defaults, options);
+            scope.options = options = angular.extend(defaults, options);
 
             scope.node = {};
             if(typeof options.data === 'string') {

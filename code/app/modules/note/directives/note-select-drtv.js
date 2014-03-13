@@ -44,15 +44,15 @@ angular.module('note').directive('noteSelect', ['$parse', function ($parse) {
             }
 
             scope.$parent.$watch(modelGet, function (id){
-                if(id && scope.options.data) {
-                    scope.path = buildPath(scope.options.data, id);
+                if(id && scope.data) {
+                    scope.path = buildPath(scope.data, id);
                 }
             });
 
             scope.$watch('data', function (data){
                 var id = modelGet(scope.$parent);
                 if(data && id) {
-                    scope.path = buildPath(scope.options.data, id);
+                    scope.path = buildPath(data, id);
                 }
             });
 
