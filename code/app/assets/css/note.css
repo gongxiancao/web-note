@@ -28,15 +28,14 @@
 .note .property-line .property-label {
   flex: 10px;
   line-height: 30px;
-  margin: 5px 10px 5px 0;
 }
 .note .property-line .property-value {
   flex: 10;
   line-height: 30px;
-  margin: 5px 10px 5px 0;
 }
 .note .content {
-  height: calc(100% - 60px);
+  flex-direction: column;
+  height: calc(100% - 110px);
 }
 .note .content .input {
   height: calc(100% - 30px);
