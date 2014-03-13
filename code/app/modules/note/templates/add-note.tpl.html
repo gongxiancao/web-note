@@ -1,16 +1,14 @@
 <div class="note" ng-controller="AddNoteCtrl">
     <div class="property-line">
         <div class="property-label">Subject</div>
-        <div>
-            <input type="text" ng-model="model.subject"></input>
-        </div>
+        <input class="property-value" type="text" ng-model="model.subject"></input>
     </div>
     <div class="property-line">
         <div class="property-label">Parent</div>
         <div class="property-value" note-select ng-model="model.parent"></div>
     </div>
     <div class="property-line">
-        <div>
+        <div class="checkbox">
             <label><input type="checkbox" ng-model="model.isCategory"/>As category</label>
         </div>
     </div>

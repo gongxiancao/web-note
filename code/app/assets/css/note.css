@@ -68,3 +68,17 @@
   height: calc(100% - 140px);
   max-height: 99999999px;
 }
+.cols {
+  display: flex;
+}
+.cols .minor {
+  flex: 1;
+  min-width: 200px;
+}
+.cols .major {
+  flex: 5;
+}
+.padding-h-sm {
+  padding-left: 5px;
+  padding-right: 5px;
+}
