@@ -1,5 +1,5 @@
 
-<li ng-repeat="node in node[options.children]">
+<li ng-repeat="node in node[options.children] | filter : options.filter">
     <tree-node></tree-node>
     <ul>
         <ng-include src="'modules/ui/templates/tree-nodes.tpl.html'"></ng-include>

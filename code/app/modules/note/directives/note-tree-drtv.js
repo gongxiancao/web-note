@@ -26,6 +26,9 @@ angular.module('ui').directive('noteTree', ['$parse', function ($parse) {
                     multiSelect: false,
                     nodeClick: function (node) {
                         console.log(node);
+                    },
+                    filter: function (item) {
+                        return item.template === 'category';
                     }
                 };
 

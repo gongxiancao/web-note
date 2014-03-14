@@ -23,10 +23,14 @@ angular.module('ui').directive('tree', [function () {
             var options = scope.options,
                 defaults = {
                     selectedItems: [],
-                    nodeTemplate: '<a ng-click="nodeClick(node)" ng-class="{selected: nodeSelected(node)}" href>{{node[options.label]}}</a>'
+                    nodeTemplate: '<a ng-click="nodeClick(node)" ng-class="{selected: nodeSelected(node)}" href>{{node[options.label]}}</a>',
+                    filter: function (item) {
+                        return true;
+                    }
                 };
 
             scope.options = options = angular.extend(defaults, options);
+            //scope.filter = options.filter;
 
             scope.node = {};
             if(typeof options.data === 'string') {
