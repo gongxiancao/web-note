@@ -1,0 +1,9 @@
+<div>
+    <div>{{model.content}}</div>
+    <div>
+        <div ng-repeat="child in model.children">
+            <a ui-sref="notes.detail({id: child.id})">{{child.subject}}</a>
+            <div>{{child.abstract}}</div>
+        </div>
+    </div>
+</div>
