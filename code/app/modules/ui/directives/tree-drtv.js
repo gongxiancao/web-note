@@ -33,7 +33,7 @@ angular.module('ui').directive('tree', [function () {
             //scope.filter = options.filter;
 
             scope.node = {};
-            if(typeof options.data === 'string') {
+            if(angular.isString(options.data)) {
                 scope.$parent.$watch(options.data, function (newValue) {
                     scope.node[options.children] = newValue;
                 });
