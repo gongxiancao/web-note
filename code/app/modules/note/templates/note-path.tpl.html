@@ -1,3 +1,4 @@
 <div>
+    <path options="options"></path>
     <span ng-repeat="node in path"><span><a ui-sref="notes.detail({id: node.id})">{{node.subject}}</a></span><span class="padding-h-sm" ng-if="!$last">/</span></span>
 </div>

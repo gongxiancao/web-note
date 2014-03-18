@@ -1,18 +1,24 @@
 'use strict';
 
-angular.module('note').directive('noteSelect', ['$parse', function ($parse) {
+angular.module('note').directive('noteSelect', ['$parse', 'NoteUtilityService', function ($parse, NoteUtilityService) {
     return {
         restrict: 'EA',
         templateUrl: 'modules/note/templates/note-select.tpl.html',
         scope: true,
         controller: ['$scope', 'NoteTreeEntity', 'NoteUiService', function ($scope, NoteTreeEntity, NoteUiService) {
-            $scope.options = {
-                data: 'data',
+            $scope.treeOptions = {
+                data: 'tree',
                 selectedItems: []
             };
+
+            $scope.pathOptions = {
+                data: 'path',
+                nodeTemplate: '<span>{{node[options.label]}}</span>'
+            };
+
             var loadNoteTrees = this.loadNoteTrees = function () {
-                NoteTreeEntity.query(function (trees) {
-                    $scope.data = trees;
+                NoteTreeEntity.query(function (nodes) {
+                    $scope.tree = nodes;
                 });
             };
 
@@ -24,39 +30,20 @@ angular.module('note').directive('noteSelect', ['$parse', function ($parse) {
             var modelGet = $parse(attr.ngModel),
                 modelSet = modelGet.assign;
 
-            function buildMap (map, nodes) {
-                nodes.forEach(function (node) {
-                    map[node.id] = node;
-                    buildMap(map, node.children || []);
-                });
-                return map;
-            }
-
-            function buildPath (nodes, id) {
-                var map = buildMap({}, nodes),
-                    node = map[id],
-                    path = [node];
-                while(node.parent) {
-                    node = map[node.parent];
-                    path.push(node);
-                }
-                return path.reverse();
-            }
-
             scope.$parent.$watch(modelGet, function (id){
-                if(id && scope.data) {
-                    scope.path = buildPath(scope.data, id);
+                if(id && scope.tree) {
+                    scope.path = NoteUtilityService.buildPath(id, scope.tree);
                 }
             });
 
-            scope.$watch('data', function (data){
+            scope.$watch('tree', function (data){
                 var id = modelGet(scope.$parent);
                 if(data && id) {
-                    scope.path = buildPath(data, id);
+                    scope.path = NoteUtilityService.buildPath(id, scope.tree);
                 }
             });
 
-            scope.$watch('options.selectedItems', function (items) {
+            scope.$watch('treeOptions.selectedItems', function (items) {
                 if(items && items.length) {
                     modelSet(scope.$parent, items[0].id);
                 }
