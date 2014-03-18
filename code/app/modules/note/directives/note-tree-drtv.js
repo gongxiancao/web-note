@@ -16,32 +16,35 @@ angular.module('ui').directive('noteTree', ['$parse', function ($parse) {
         restrict: 'EA',
         template: '<div tree options="options"/>',
         scope: true,
-        link: function (scope, element, attr) {
+        compile: function () {
+            return {
+                pre: function (scope, element, attr) {
+                    var optionsGet = $parse(attr.options),
+                        options = optionsGet(scope.$parent),
+                        defaults = {
+                            label: 'subject',
+                            children: 'children',
+                            selectedItems: [],
+                            multiSelect: false,
+                            nodeClick: function (node) {
+                                console.log(node);
+                            },
+                            filter: function (item) {
+                                return item.template === 'category';
+                            }
+                        };
 
-            var optionsGet = $parse(attr.options),
-                options = optionsGet(scope.$parent),
-                defaults = {
-                    label: 'subject',
-                    children: 'children',
-                    selectedItems: [],
-                    multiSelect: false,
-                    nodeClick: function (node) {
-                        console.log(node);
-                    },
-                    filter: function (item) {
-                        return item.template === 'category';
+                    options = angular.extend(defaults, options);
+
+                    scope.options = options;
+
+                    if(angular.isString(options.data)) {
+                        scope.$parent.$watch(options.data, function (data) {
+                            scope[options.data] = data;
+                        });
                     }
-                };
-
-            options = angular.extend(defaults, options);
-
-            scope.options = options;
-
-            if(angular.isString(options.data)) {
-                scope.$parent.$watch(options.data, function (data) {
-                    scope[options.data] = data;
-                });
-            }
+                }
+            };
         }
     };
 }]);
