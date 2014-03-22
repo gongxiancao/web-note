@@ -13,6 +13,26 @@ angular.module('note').controller('NoteManagementCtrl', ['$scope', 'NoteTreeEnti
             });
         }
 
+        $scope.toolbarOptions = {
+            buttons: [
+                {
+                    name: 'add',
+                    localized_label: 'Add note',
+                    actionHandler: function () {
+                        var note = {};
+                        NoteUiService.openAddNewNote(note).then(
+                            function (note) {
+                                console.log(note);
+                            },
+                            function (err) {
+                                throw err;
+                            }
+                        );
+                    }
+                }
+            ]
+        };
+
         loadNoteTrees();
 
         $scope.$on(NoteUiService.newNoteAdded, loadNoteTrees);

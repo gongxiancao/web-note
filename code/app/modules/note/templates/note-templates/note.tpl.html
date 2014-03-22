@@ -1,1 +1,10 @@
-<div>Note template</div>
+<div class="cols">
+    <h3 ng-hide="inEditMode" class="major">{{model.subject}}</h3>
+    <input ng-show="inEditMode" class="major" type="text" ng-model="model.subject"></input>
+    <div class="minor" note-toolbar options="toolbarOptions"/>
+</div>
+
+<div ng-hide="inEditMode">{{model.content}}</div>
+<div ng-show="inEditMode">
+    <textarea ui-tinymce="{resize:false}" ng-model="model.content"></textarea>
+</div>

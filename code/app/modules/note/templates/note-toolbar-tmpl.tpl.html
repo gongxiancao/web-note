@@ -1,5 +1,5 @@
 <div>
     <ul>
-        <li ng-repeat="button in buttons" class="btn" ng-click="button.actionHandler()">{{button.localized_label}}</li>
+        <li ng-repeat="button in options.buttons | filter: visible" class="btn" ng-click="button.actionHandler()">{{button.localized_label}}</li>
     </ul>
 </div>

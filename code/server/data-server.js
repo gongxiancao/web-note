@@ -36,8 +36,15 @@ module.exports = {
             });
         });
 
+        app.post('/api/notes/:id', function (req, res) {
+            console.log('*enter saveNote*');
+            notes(req.ctx).saveNote(req.body, function (err, item) {
+                res.json(item);
+            });
+        });
+
         app.post('/api/notes', function(req, res){
-            console.log('*enter saveNoteNote*');
+            console.log('*enter saveNote*');
             notes(req.ctx).saveNote(req.body, function (err, item) {
                 res.json(item);
             });

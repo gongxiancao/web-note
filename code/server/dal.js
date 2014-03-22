@@ -40,10 +40,11 @@ module.exports = function (ctx) {
                 done(null, note);
             },
             updateNote: function (note, done) {
-                $this.getNote(ctx.user, note.id, function (err, item) {
+                $this.getNote(note.id, function (err, item) {
                     if(item) {
-                        item.subject = note.subject.
+                        item.subject = note.subject;
                         item.content = note.content;
+                        item.modified_by = ctx.user;
                     }
                     done(null, item);
                 });

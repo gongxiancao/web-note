@@ -14,7 +14,7 @@ angular.module('note').service('NoteUtilityService',
             var map = buildMap({}, nodes),
                 node = map[id],
                 path = [node];
-            while(node.parent) {
+            while(node && node.parent) {
                 node = map[node.parent];
                 path.push(node);
             }
