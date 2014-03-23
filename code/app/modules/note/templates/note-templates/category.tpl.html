@@ -5,5 +5,17 @@
             <div>{{child.abstract}}</div>
         </div>
     </div>
-    <div class="minor">{{model.content}}</div>
+    <div class="minor">
+        <div class="minor" note-toolbar options="toolbarOptions"/>
+        <h4 ng-hide="inEditMode">
+            {{model.subject}}
+        </h4>
+        <input ng-show="inEditMode" type="text" ng-model="model.subject"></input>
+        <div ng-hide="inEditMode">
+            {{model.content}}
+        </div>
+        <div ng-show="inEditMode">
+            <textarea ui-tinymce="{resize:false}" ng-model="model.content"></textarea>
+        </div>
+    </div>
 </div>
