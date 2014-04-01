@@ -15,7 +15,7 @@ module.exports = function (ctx) {
                     done = selector;
                     selector = selectors.all;
                 }
-
+                console.log(sql);
                 client.connect(function(err) {
                     if(err) {
                         return done(err);

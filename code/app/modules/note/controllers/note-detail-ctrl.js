@@ -6,11 +6,16 @@ angular.module('note').controller('NoteDetailCtrl', ['$scope', '$stateParams', '
             data: 'notePath',
             nodeTemplate: '<a ui-sref="notes.detail({id:node.id})" ng-click="nodeClick(node)" ng-class="{selected: nodeSelected(node)}">{{node[options.label]}}</a>'
         };
+
         $scope.id = $stateParams.id;
         NoteEntity.get({id: $scope.id}, function (result) {
             $scope.model = result;
             var template = $scope.model.template || 'note';
             $scope.templateUrl = 'modules/note/templates/note-templates/' + template  + '.tpl.html';
+        });
+
+        NoteEntity.query({parent: $scope.id}, function (result) {
+            $scope.children = result;
         });
 
         $scope.$watch('noteTree', function (data, old) {

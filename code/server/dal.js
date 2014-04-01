@@ -3,7 +3,18 @@
 var db = require('pg'),
     pg = require('./pg'),
     _ = require('underscore'),
-    mockNoteTable = require('./mock-data/note.json');
+    mockNoteTable = require('./mock-data/note.json'),
+    getFilterClause = function (filter, params) {
+        var caluses = [];
+        if(params.length) {
+            caluses.push('');
+        }
+        for(var key in filter) {
+            params.push(filter[key]);
+            caluses.push(key + ' = $' + params.length);
+        }
+        return caluses.join(' and ');
+    };
 
 module.exports = function (ctx) {
     function createConStr(ctx) {
@@ -25,8 +36,12 @@ module.exports = function (ctx) {
             getNote: function (id, done) {
                 pg(ctx).query('select * from note where id = $1', [id], pg.selectors.first, done);
             },
-            queryNotes: function (done) {
-                pg(ctx).query('select * from note where created_by = $1', [ctx.user], done);
+            queryNotes: function (filter, done) {
+                var params = [ctx.user],
+                    done = done || filter,
+                    filter = filter === done ? {} : filter,
+                    filterClause = getFilterClause(filter, params);
+                pg(ctx).query('select * from note where created_by = $1' + filterClause, params, done);
             },
             createNote: function (note, done) {
                 note.created_by = ctx.user;

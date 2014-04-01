@@ -36,7 +36,7 @@ module.exports = {
 
         app.get('/api/notes', function(req, res){
             console.log('*enter queryNotes*');
-            notes(req.ctx).queryNotes(resultHandler(res));
+            notes(req.ctx).queryNotes(req.query, resultHandler(res));
         });
 
         app.get('/api/note-trees', function(req, res){

@@ -1,6 +1,6 @@
 <div class="cols">
     <div class="major">
-        <div ng-repeat="child in model.children">
+        <div ng-repeat="child in children">
             <a ui-sref="notes.detail({id: child.id})">{{child.subject}}</a>
             <div>{{child.abstract}}</div>
         </div>
