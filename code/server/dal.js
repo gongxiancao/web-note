@@ -1,6 +1,7 @@
 'use strict';
 
-var //db = require('pg'),
+var db = require('pg'),
+    pg = require('./pg'),
     _ = require('underscore'),
     mockNoteTable = require('./mock-data/note.json');
 
@@ -9,10 +10,10 @@ module.exports = function (ctx) {
 
         // default product: 'postgres://postgres:note@localhost/postgres'
         var tenant = 'public_user',
-            pwd = 'note',
+            pwd = 'storm',
             host = 'localhost',
             port = '5432',
-            db = 'postgres';
+            db = 'webnote';
 
         ctx.constr = 'postgres://' + tenant + ':' + pwd + '@' + host + ':' + port + '/' + db;
         return ctx.constr;
@@ -22,32 +23,25 @@ module.exports = function (ctx) {
 
     var $this = {
             getNote: function (id, done) {
-                var item = _.find(mockNoteTable, function (item) {
-                    return item.created_by === ctx.user && item.id === id;
-                });
-                done(null, item);
+                pg(ctx).query('select * from note where id = $1', [id], pg.selectors.first, done);
             },
             queryNotes: function (done) {
-                var items = _.select(mockNoteTable, function (item) {
-                    return item.created_by === ctx.user;
-                });
-                done(null, items);
+                pg(ctx).query('select * from note where created_by = $1', [ctx.user], done);
             },
             createNote: function (note, done) {
-                mockNoteTable.push(note);
-                note.id = mockNoteTable.length;
                 note.created_by = ctx.user;
-                done(null, note);
+                pg(ctx).query(
+                    'insert into note (subject, content, created_by, parent, template) values ($1, $2, $3, $4, $5) returning id, subject, content, created_by, parent',
+                    [note.subject, note.content, note.created_by, note.parent, note.template],
+                    pg.selectors.first,
+                    done);
             },
             updateNote: function (note, done) {
-                $this.getNote(note.id, function (err, item) {
-                    if(item) {
-                        item.subject = note.subject;
-                        item.content = note.content;
-                        item.modified_by = ctx.user;
-                    }
-                    done(null, item);
-                });
+                pg(ctx).query(
+                    'update note set subject = $1, content = $2, created_by = $3, parent = $4, template = $5 where id = $6',
+                    [note.subject, note.content, note.created_by, note.parent, note.template, note.id],
+                    pg.selectors.first,
+                    done);
             },
             saveNote: function (note, done) {
                 if(note.id) {
