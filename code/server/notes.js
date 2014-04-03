@@ -9,8 +9,8 @@ module.exports = function (ctx) {
             getNote: function (id, done) {
                 dal(ctx).getNote(id, done);
             },
-            queryNotes: function (filter, done) {
-                dal(ctx).queryNotes(filter, done);
+            queryNotes: function (options, done) {
+                dal(ctx).queryNotes(options, done);
             },
             getNoteTrees: function (done) {
                 dal(ctx).queryNotes(function (err, items) {

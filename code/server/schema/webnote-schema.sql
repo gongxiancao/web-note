@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.3.1
 -- Dumped by pg_dump version 9.3.1
--- Started on 2014-04-01 14:31:49
+-- Started on 2014-04-02 16:38:10
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -12,45 +12,6 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-
-DROP DATABASE webnote;
---
--- TOC entry 1936 (class 1262 OID 83622)
--- Name: webnote; Type: DATABASE; Schema: -; Owner: postgres
---
-
-CREATE DATABASE webnote WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'English_United States.1252' LC_CTYPE = 'English_United States.1252';
-
-
-ALTER DATABASE webnote OWNER TO postgres;
-
-\connect webnote
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-
---
--- TOC entry 6 (class 2615 OID 2200)
--- Name: public; Type: SCHEMA; Schema: -; Owner: public_user
---
-
-CREATE SCHEMA public;
-
-
-ALTER SCHEMA public OWNER TO public_user;
-
---
--- TOC entry 1937 (class 0 OID 0)
--- Dependencies: 6
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: public_user
---
-
-COMMENT ON SCHEMA public IS 'standard public schema';
-
 
 --
 -- TOC entry 172 (class 3079 OID 11750)
@@ -61,7 +22,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 1939 (class 0 OID 0)
+-- TOC entry 1943 (class 0 OID 0)
 -- Dependencies: 172
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -86,7 +47,9 @@ CREATE TABLE note (
     subject text NOT NULL,
     content text,
     created_by bigint NOT NULL,
-    modified_by bigint
+    modified_by bigint,
+    template text,
+    note_ts tsvector
 );
 
 
@@ -108,7 +71,7 @@ CREATE SEQUENCE note_id_seq
 ALTER TABLE public.note_id_seq OWNER TO public_user;
 
 --
--- TOC entry 1940 (class 0 OID 0)
+-- TOC entry 1944 (class 0 OID 0)
 -- Dependencies: 170
 -- Name: note_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: public_user
 --
@@ -125,7 +88,32 @@ ALTER TABLE ONLY note ALTER COLUMN id SET DEFAULT nextval('note_id_seq'::regclas
 
 
 --
--- TOC entry 1938 (class 0 OID 0)
+-- TOC entry 1826 (class 2606 OID 98820)
+-- Name: note_pk; Type: CONSTRAINT; Schema: public; Owner: public_user; Tablespace: 
+--
+
+ALTER TABLE ONLY note
+    ADD CONSTRAINT note_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1827 (class 1259 OID 98822)
+-- Name: note_ts_idx; Type: INDEX; Schema: public; Owner: public_user; Tablespace: 
+--
+
+CREATE INDEX note_ts_idx ON note USING gin (note_ts);
+
+
+--
+-- TOC entry 1828 (class 2620 OID 98825)
+-- Name: note_ts_update_trigger; Type: TRIGGER; Schema: public; Owner: public_user
+--
+
+CREATE TRIGGER note_ts_update_trigger BEFORE INSERT OR UPDATE OF subject, content ON note FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('note_ts', 'pg_catalog.english', 'subject', 'content');
+
+
+--
+-- TOC entry 1942 (class 0 OID 0)
 -- Dependencies: 6
 -- Name: public; Type: ACL; Schema: -; Owner: public_user
 --
@@ -135,7 +123,7 @@ REVOKE ALL ON SCHEMA public FROM public_user;
 GRANT ALL ON SCHEMA public TO public_user;
 
 
--- Completed on 2014-04-01 14:31:49
+-- Completed on 2014-04-02 16:38:10
 
 --
 -- PostgreSQL database dump complete

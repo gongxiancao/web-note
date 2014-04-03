@@ -20,5 +20,24 @@ angular.module('note').service('NoteUtilityService',
             }
             return path.reverse();
         };
+
+        var flattenObject = function (properties, path, obj) {
+            var key, val, type;
+            for(key in obj) {
+                val = obj[key];
+                type = typeof val;
+                if(type === 'object') {
+                    flattenObject(properties, path + key + '.', val);
+                } else if(type !== 'function') {
+                    properties[path + key] = val;
+                }
+            }
+            return properties;
+        };
+
+        this.flattenObject = function (obj) {
+            var flat = {};
+            return flattenObject(flat, '', obj);
+        };
     }
 );

@@ -14,7 +14,7 @@ angular.module('note').controller('NoteDetailCtrl', ['$scope', '$stateParams', '
             $scope.templateUrl = 'modules/note/templates/note-templates/' + template  + '.tpl.html';
         });
 
-        NoteEntity.query({parent: $scope.id}, function (result) {
+        NoteEntity.query(NoteUtilityService.flattenObject({filter: {parent: $scope.id}, search: $stateParams.search}), function (result) {
             $scope.children = result;
         });
 

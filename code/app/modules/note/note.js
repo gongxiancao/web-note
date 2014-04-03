@@ -10,7 +10,7 @@ angular.module('note', ['ui', 'platform', 'ngResource', 'ui.router', 'templates-
             controller: 'NoteManagementCtrl'
         })
         .state('notes.detail', {
-            url: '/{id:[0-9]+}',
+            url: '/{id:[0-9]+}?search',
             templateUrl: 'modules/note/templates/note-detail.tpl.html',
             controller: 'NoteDetailCtrl'
         })

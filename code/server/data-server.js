@@ -1,7 +1,26 @@
 'use strict';
 
 var notes = require('./notes'),
-    errors = require('./errors');
+    errors = require('./errors'),
+    unflattenObject = function (obj) {
+        var unflat = {}, key, parts, i, len, part, parent, child;
+        for(key in obj) {
+            parts = key.split('.');
+            parent = unflat;
+            for(i = 0, len = parts.length - 1; i < len; ++ i) {
+                part = parts[i];
+                child = parent[part];
+                if(child === undefined) {
+                    child = {};
+                    parent[part] = child;
+                }
+                parent = child;
+            }
+            parent[parts[i]] = obj[key];
+        }
+        return unflat;
+    };
+
 
 module.exports = {
     initialize: function (options, done) {
@@ -36,7 +55,9 @@ module.exports = {
 
         app.get('/api/notes', function(req, res){
             console.log('*enter queryNotes*');
-            notes(req.ctx).queryNotes(req.query, resultHandler(res));
+            console.log(req.query);
+            var options = unflattenObject(req.query);
+            notes(req.ctx).queryNotes(options, resultHandler(res));
         });
 
         app.get('/api/note-trees', function(req, res){

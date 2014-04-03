@@ -36,12 +36,17 @@ module.exports = function (ctx) {
             getNote: function (id, done) {
                 pg(ctx).query('select * from note where id = $1', [id], pg.selectors.first, done);
             },
-            queryNotes: function (filter, done) {
+            queryNotes: function (options, done) {
                 var params = [ctx.user],
-                    done = done || filter,
-                    filter = filter === done ? {} : filter,
-                    filterClause = getFilterClause(filter, params);
-                pg(ctx).query('select * from note where created_by = $1' + filterClause, params, done);
+                    done = done || options,
+                    options = (options === done ? {} : options) || {},
+                    filterClause = getFilterClause(options.filter, params);
+
+                if(options.search) {
+                    params.push(options.search);
+                    filterClause += ' and note_ts @@ to_tsquery($'+ params.length + ') ';
+                }
+                pg(ctx).query('select * from note where created_by = $1 ' + filterClause, params, done);
             },
             createNote: function (note, done) {
                 note.created_by = ctx.user;
