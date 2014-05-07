@@ -13,6 +13,7 @@
     "angular-bootstrap": "~0.8.0",
     "jquery-ui": "~1.10.3",
     "angular-ui-select2": "~0.0.5",
-    "angular-ui-tinymce": "latest"
+    "angular-redactor": "~1.0.0",
+    "redactor": "*"
   }
 }

@@ -15,7 +15,7 @@
             {{model.content}}
         </div>
         <div ng-show="inEditMode">
-            <textarea ui-tinymce="{resize:false}" ng-model="model.content"></textarea>
+            <textarea ng-model="model.content" redactor></textarea>
         </div>
     </div>
 </div>

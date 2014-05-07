@@ -44,14 +44,13 @@ module.exports = {
             'vendor/nvd3/nv.d3.js',
             'vendor/angular-translate/angular-translate.js',
             'vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
-            'vendor/tinymce/tinymce.min.js',
-            'vendor/tinymce/themes/modern/theme.min.js',
-            'vendor/angular-ui-tinymce/src/tinymce.js'
+            'vendor/redactor/redactor/redactor.js',
+            'vendor/angular-redactor/angular-redactor.js'
         ],
         css: [
             'vendor/jquery-ui/themes/base/jquery-ui.css',
             'vendor/select2/select2.css',
-            'vendor/tinymce/**/*.css'
+            'vendor/redactor/redactor/redactor.css'
         ],
         assets: [
             'vendor/tinymce/**/*.gif'
