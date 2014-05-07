@@ -21,7 +21,7 @@ module.exports = function (ctx) {
 
         // default product: 'postgres://postgres:note@localhost/postgres'
         var tenant = 'public_user',
-            pwd = 'storm',
+            pwd = 'password',
             host = 'localhost',
             port = '5432',
             db = 'webnote';
