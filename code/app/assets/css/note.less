@@ -20,43 +20,15 @@
     width: ~"calc( 100% - @{size} * 10px - @{margin})";
 }
 
-.fullscreen-tinymce {
-    .mce-tinymce {
-        height: 100%;
-        .mce-container-body {
-            height: 100%;
-            .mce-edit-area {
-                height: ~"calc(100% - 103px)";
-                iframe {
-                    height: 100% !important;
-                }
-            }
-        }
-    }
-}
 
 .note {
     height: ~"calc(100% - 15px)";
-    .property-line {
-        clear: both;
-        display: flex;
-        margin: 10px 0;
-        .property-label {
-            flex: 10px;
-            line-height: 30px;
-        }
-        .property-value {
-            flex: 10;
-            line-height: 30px;
-        }
-    }
 
     .content {
         flex-direction: column;
         height:~"calc(100% - 110px)";
         .input {
             height: ~"calc(100% - 30px)";
-            .fullscreen-tinymce;
         }
     }
 

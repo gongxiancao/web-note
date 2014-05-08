@@ -48,7 +48,8 @@ module.exports = {
             'vendor/angular-redactor/angular-redactor.js'
         ],
         css: [
-            'vendor/jquery-ui/themes/base/jquery-ui.css',
+            'vendor/bootstrap/dist/css/bootstrap.css',
+            'vendor/bootstrap/dist/css/bootstrap.css.map',
             'vendor/select2/select2.css',
             'vendor/redactor/redactor/redactor.css'
         ],

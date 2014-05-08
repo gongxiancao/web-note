@@ -5,33 +5,8 @@
 .h-center800 input[type="text"] {
   width: 710px;
 }
-.fullscreen-tinymce .mce-tinymce {
-  height: 100%;
-}
-.fullscreen-tinymce .mce-tinymce .mce-container-body {
-  height: 100%;
-}
-.fullscreen-tinymce .mce-tinymce .mce-container-body .mce-edit-area {
-  height: calc(100% - 103px);
-}
-.fullscreen-tinymce .mce-tinymce .mce-container-body .mce-edit-area iframe {
-  height: 100% !important;
-}
 .note {
   height: calc(100% - 15px);
-}
-.note .property-line {
-  clear: both;
-  display: flex;
-  margin: 10px 0;
-}
-.note .property-line .property-label {
-  flex: 10px;
-  line-height: 30px;
-}
-.note .property-line .property-value {
-  flex: 10;
-  line-height: 30px;
 }
 .note .content {
   flex-direction: column;
@@ -39,18 +14,6 @@
 }
 .note .content .input {
   height: calc(100% - 30px);
-}
-.note .content .input .mce-tinymce {
-  height: 100%;
-}
-.note .content .input .mce-tinymce .mce-container-body {
-  height: 100%;
-}
-.note .content .input .mce-tinymce .mce-container-body .mce-edit-area {
-  height: calc(100% - 103px);
-}
-.note .content .input .mce-tinymce .mce-container-body .mce-edit-area iframe {
-  height: 100% !important;
 }
 .note .property-colon-label {
   margin: 5px 10px 5px 0;
