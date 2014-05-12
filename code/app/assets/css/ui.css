@@ -1,5 +1,5 @@
 .tree .selected {
-  background-color: gray;
+  background-color: #eef;
 }
 .clear-fix {
   clear: both;
@@ -16,4 +16,17 @@
 }
 .note-toolbar:after {
   clear: both;
+}
+.modal-content {
+  display: flex;
+  flex-flow: column;
+}
+.modal-content .modal-header {
+  height: 87px;
+}
+.modal-content .modal-body {
+  height: 10;
+}
+.modal-content .modal-footer {
+  height: 74px;
 }
