@@ -4,9 +4,25 @@
     }
 }
 
+.clear-fix {
+  clear: both;
+}
+
 .full-w {
   width: 100%;
 }
 .full-h {
   height: 100%;
+}
+
+.note-toolbar {
+  >ul {
+    >li {
+      display: block;
+      float: left;
+    }
+  }
+}
+.note-toolbar:after {
+  clear: both;
 }

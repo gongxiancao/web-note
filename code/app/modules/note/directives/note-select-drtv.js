@@ -8,7 +8,10 @@ angular.module('note').directive('noteSelect', ['$parse', 'NoteUtilityService', 
         controller: ['$scope', 'NoteTreeEntity', 'NoteUiService', function ($scope, NoteTreeEntity, NoteUiService) {
             $scope.treeOptions = {
                 data: 'tree',
-                selectedItems: []
+                selectedItems: [],
+                nodeClick: function () {
+                    $scope.open = false;
+                }
             };
 
             $scope.pathOptions = {
