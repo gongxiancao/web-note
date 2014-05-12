@@ -1,7 +1,7 @@
 .tree .selected {
   background-color: gray;
 }
-clear-fix {
+.clear-fix {
   clear: both;
 }
 .full-w {

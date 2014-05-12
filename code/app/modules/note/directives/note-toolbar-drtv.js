@@ -3,7 +3,7 @@
 angular.module('note').directive('noteToolbar', [function () {
     return {
         restrict: 'EA',
-        templateUrl: 'modules/note/templates/note-toolbar-tmpl.tpl.html',
+        templateUrl: 'modules/note/templates/note-toolbar.tpl.html',
         scope: {
             actionHandler: '&',
             options: '='
