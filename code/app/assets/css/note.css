@@ -10,13 +10,6 @@ body {
 .h-center800 input[type="text"] {
   width: 710px;
 }
-.redactor_box {
-  display: flex;
-  flex-flow: column;
-}
-.redactor_box .redactor_editor {
-  flex: 1;
-}
 .note {
   height: 100%;
   display: flex;

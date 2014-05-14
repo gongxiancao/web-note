@@ -31,6 +31,7 @@ angular.module('note').controller('NoteDetailCtrl', ['$scope', '$stateParams', '
                     localized_label: 'Edit',
                     actionHandler: function () {
                         $scope.inEditMode = true;
+                        $scope.model.newContent = $scope.model.content;
                     },
                     visible: function () {
                         return !$scope.inEditMode;
@@ -41,6 +42,8 @@ angular.module('note').controller('NoteDetailCtrl', ['$scope', '$stateParams', '
                     localized_label: 'Save',
                     hide: true,
                     actionHandler: function () {
+                        $scope.model.content = $scope.model.newContent;
+                        delete $scope.model.newContent;
                         NoteEntity.save($scope.model, function (result) {
                             console.log('save successful');
                         });
@@ -55,6 +58,7 @@ angular.module('note').controller('NoteDetailCtrl', ['$scope', '$stateParams', '
                     localized_label: 'Cancel',
                     hide: true,
                     actionHandler: function () {
+                        delete $scope.model.newContent;
                         $scope.inEditMode = false;
                     },
                     visible: function () {

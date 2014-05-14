@@ -44,8 +44,7 @@ module.exports = {
             'vendor/nvd3/nv.d3.js',
             'vendor/angular-translate/angular-translate.js',
             'vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
-            'vendor/redactor/redactor/redactor.js',
-            'vendor/angular-redactor/angular-redactor.js'
+            'vendor/redactor/redactor/redactor.js'
         ],
         css: [
             'vendor/bootstrap/dist/css/bootstrap.css',

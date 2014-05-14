@@ -1,4 +1,4 @@
 'use strict';
 
-angular.module('ui', ['ui.bootstrap', 'templates-app', 'angular-redactor']);
+angular.module('ui', ['ui.bootstrap', 'templates-app']);
 

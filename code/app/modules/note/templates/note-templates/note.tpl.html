@@ -7,8 +7,8 @@
 
     <div class="major flex rows">
         <div class="major" ng-hide="inEditMode">{{model.content}}</div>
-        <div class="major" ng-show="inEditMode">
-            <textarea class="major" ng-show="inEditMode" ng-model="model.content" redactor></textarea>
+        <div class="major" ng-if="inEditMode">
+            <textarea class="major" ng-model="model.newContent" nt-redactor></textarea>
         </div>
     </div>
 

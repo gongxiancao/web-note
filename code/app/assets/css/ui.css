@@ -22,9 +22,11 @@
 }
 .flex .minor {
   flex: 1;
+  display: flex;
 }
 .flex .major {
   flex: 5;
+  display: flex;
 }
 .flex.rows {
   flex-flow: column;
@@ -32,7 +34,12 @@
 .flex.cols {
   flex-flow: row;
 }
-.flex-1 {
+.redactor_box {
+  display: flex;
+  flex: 1;
+  flex-flow: column;
+}
+.redactor_box .redactor_editor {
   flex: 1;
 }
 .note-toolbar > ul > li {
