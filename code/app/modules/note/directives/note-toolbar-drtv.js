@@ -10,7 +10,7 @@ angular.module('note').directive('noteToolbar', [function () {
         },
         link: function (scope/*, element, attr, controller*/) {
             scope.visible = function (item) {
-                return !item.hide;
+                return angular.isFunction(item.visible)? item.visible() : (angular.isDefined(item.visible)? item.visible : true);
             };
         }
     };

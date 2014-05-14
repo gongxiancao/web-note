@@ -1,10 +1,15 @@
-<div class="cols">
-    <h3 ng-hide="inEditMode" class="major">{{model.subject}}</h3>
-    <input ng-show="inEditMode" class="major" type="text" ng-model="model.subject"></input>
-    <div class="minor" note-toolbar options="toolbarOptions"/>
-</div>
+<div class="major flex rows">
+    <div class="row">
+        <h3 ng-hide="inEditMode" class="col-md-8">{{model.subject}}</h3>
+        <input ng-show="inEditMode" class="col-md-8 subject" type="text" ng-model="model.subject"></input>
+        <div class="col-md-4" note-toolbar options="toolbarOptions"/>
+    </div>
 
-<div ng-hide="inEditMode">{{model.content}}</div>
-<div ng-show="inEditMode">
-    <textarea ng-model="model.content" redactor></textarea>
+    <div class="major flex rows">
+        <div class="major" ng-hide="inEditMode">{{model.content}}</div>
+        <div class="major" ng-show="inEditMode">
+            <textarea class="major" ng-show="inEditMode" ng-model="model.content" redactor></textarea>
+        </div>
+    </div>
+
 </div>

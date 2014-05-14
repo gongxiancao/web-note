@@ -10,6 +10,31 @@
 .full-h {
   height: 100%;
 }
+.full {
+  width: 100%;
+  height: 100%;
+}
+.absolute {
+  position: absolute;
+}
+.flex {
+  display: flex;
+}
+.flex .minor {
+  flex: 1;
+}
+.flex .major {
+  flex: 5;
+}
+.flex.rows {
+  flex-flow: column;
+}
+.flex.cols {
+  flex-flow: row;
+}
+.flex-1 {
+  flex: 1;
+}
 .note-toolbar > ul > li {
   display: block;
   float: left;
@@ -25,7 +50,7 @@
   height: 87px;
 }
 .modal-content .modal-body {
-  height: 10;
+  flex: 1;
 }
 .modal-content .modal-footer {
   height: 74px;

@@ -27,29 +27,13 @@ angular.module('note').controller('NoteDetailCtrl', ['$scope', '$stateParams', '
         $scope.toolbarOptions = {
             buttons: [
                 {
-                    name: 'add',
-                    localized_label: 'Add note',
-                    actionHandler: function () {
-                        var note = {};
-                        NoteUiService.openAddNewNote(note).then(
-                            function (note) {
-                                console.log(note);
-                            },
-                            function (err) {
-                                throw err;
-                            }
-                        );
-                    }
-                },
-                {
                     name: 'edit',
                     localized_label: 'Edit',
                     actionHandler: function () {
                         $scope.inEditMode = true;
-                        $scope.toolbarOptions.buttons[0].hide = $scope.inEditMode;
-                        $scope.toolbarOptions.buttons[1].hide = $scope.inEditMode;
-                        $scope.toolbarOptions.buttons[2].hide = !$scope.inEditMode;
-                        $scope.toolbarOptions.buttons[3].hide = !$scope.inEditMode;
+                    },
+                    visible: function () {
+                        return !$scope.inEditMode;
                     }
                 },
                 {
@@ -61,10 +45,9 @@ angular.module('note').controller('NoteDetailCtrl', ['$scope', '$stateParams', '
                             console.log('save successful');
                         });
                         $scope.inEditMode = false;
-                        $scope.toolbarOptions.buttons[0].hide = $scope.inEditMode;
-                        $scope.toolbarOptions.buttons[1].hide = $scope.inEditMode;
-                        $scope.toolbarOptions.buttons[2].hide = !$scope.inEditMode;
-                        $scope.toolbarOptions.buttons[3].hide = !$scope.inEditMode;
+                    },
+                    visible: function () {
+                        return $scope.inEditMode;
                     }
                 },
                 {
@@ -73,10 +56,9 @@ angular.module('note').controller('NoteDetailCtrl', ['$scope', '$stateParams', '
                     hide: true,
                     actionHandler: function () {
                         $scope.inEditMode = false;
-                        $scope.toolbarOptions.buttons[0].hide = $scope.inEditMode;
-                        $scope.toolbarOptions.buttons[1].hide = $scope.inEditMode;
-                        $scope.toolbarOptions.buttons[2].hide = !$scope.inEditMode;
-                        $scope.toolbarOptions.buttons[3].hide = !$scope.inEditMode;
+                    },
+                    visible: function () {
+                        return $scope.inEditMode;
                     }
                 }
             ]
