@@ -13,6 +13,7 @@
     "angular-ui-select2": "~0.0.5",
     "redactor": "*",
     "bootstrap": "~3.1.1",
-    "angular-bootstrap": "~0.11.0"
+    "angular-bootstrap": "~0.11.0",
+    "angular-sanitize": "~1.2.16"
   }
 }

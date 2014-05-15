@@ -36,6 +36,7 @@ module.exports = {
             'vendor/angular-animate/angular-animate.js',
             'vendor/angular-ui-utils/modules/route/route.js',
             'vendor/angular-ui-router/release/angular-ui-router.js',
+            'vendor/angular-sanitize/angular-sanitize.js',
             'vendor/ng-grid/ng-grid-2.0.7.debug.js',
             'vendor/log4javascript/log4javascript.js',
             'vendor/angular-resource/angular-resource.js',

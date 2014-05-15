@@ -6,7 +6,7 @@
     </div>
 
     <div class="major flex rows">
-        <div class="major" ng-hide="inEditMode">{{model.content}}</div>
+        <div class="major" ng-hide="inEditMode" ng-bind-html="model.content"></div>
         <div class="major" ng-if="inEditMode">
             <textarea class="major" ng-model="model.newContent" nt-redactor></textarea>
         </div>

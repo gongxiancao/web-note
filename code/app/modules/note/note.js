@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('note', ['ui', 'platform', 'ngResource', 'ui.router', 'templates-app']).
+angular.module('note', ['ui', 'platform', 'ngResource', 'ui.router', 'templates-app', 'ngSanitize']).
     config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/notes');
     $stateProvider.
