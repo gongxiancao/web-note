@@ -17,22 +17,21 @@
 .absolute {
   position: absolute;
 }
-.flex {
+.rows {
   display: flex;
-}
-.flex .minor {
-  flex: 1;
-  display: flex;
-}
-.flex .major {
-  flex: 5;
-  display: flex;
-}
-.flex.rows {
   flex-flow: column;
 }
-.flex.cols {
+.cols {
+  display: flex;
   flex-flow: row;
+}
+.rows .minor,
+.cols .minor {
+  flex: 1;
+}
+.rows .major,
+.cols .major {
+  flex: 5;
 }
 .redactor_box {
   display: flex;

@@ -1,4 +1,4 @@
-<div class="note" ng-controller="AddNoteCtrl">
+<div class="note rows" ng-controller="AddNoteCtrl">
     <div class="form-group">
         <label class="control-label full-w">
             <span class="col-sm-2">Subject</span>
@@ -19,10 +19,10 @@
             </label>
         </div>
     </div>
-    <div class="form-group content">
+    <div class="form-group major rows">
         <div class="property-colon-label">Content:</div>
-        <div class="input">
-            <textarea ng-model="model.content" redactor></textarea>
+        <div class="input major rows">
+            <textarea class="major" ng-model="model.content" nt-redactor></textarea>
         </div>
     </div>
 </div>

@@ -26,23 +26,22 @@
   position: absolute;
 }
 
-.flex {
+.rows {
   display: flex;
+  flex-flow: column;
+}
+.cols {
+  display: flex;
+  flex-flow: row;
+}
+
+.rows, .cols {
   .minor {
     flex: 1;
-    display: flex;
   }
   .major {
     flex: 5;
-    display: flex;
   }
-}
-
-.flex.rows {
-  flex-flow: column;
-}
-.flex.cols {
-  flex-flow: row;
 }
 
 .redactor_box {

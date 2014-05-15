@@ -1,14 +1,14 @@
-<div class="major flex rows">
+<div class="major rows">
     <div class="row">
         <h3 ng-hide="inEditMode" class="col-md-8">{{model.subject}}</h3>
         <input ng-show="inEditMode" class="col-md-8 subject" type="text" ng-model="model.subject"></input>
         <div class="col-md-4" note-toolbar options="toolbarOptions"/>
     </div>
 
-    <div class="major flex rows">
+    <div class="major rows">
         <div class="major" ng-hide="inEditMode" ng-bind-html="model.content"></div>
-        <div class="major" ng-if="inEditMode">
-            <textarea class="major" ng-model="model.newContent" nt-redactor></textarea>
+        <div class="major rows" ng-if="inEditMode">
+            <textarea class="major rows" ng-model="model.newContent" nt-redactor></textarea>
         </div>
     </div>
 

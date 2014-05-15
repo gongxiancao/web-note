@@ -1,21 +1,23 @@
-<div class="cols">
+<div class="major cols">
     <div class="major">
         <div ng-repeat="child in children">
             <a ui-sref="notes.detail({id: child.id})">{{child.subject}}</a>
             <div>{{child.abstract}}</div>
         </div>
     </div>
-    <div class="minor">
-        <div class="minor" note-toolbar options="toolbarOptions"/>
-        <h4 ng-hide="inEditMode">
-            {{model.subject}}
-        </h4>
-        <input ng-show="inEditMode" type="text" ng-model="model.subject"></input>
-        <div ng-hide="inEditMode">
-            {{model.content}}
-        </div>
-        <div ng-show="inEditMode">
-            <textarea ng-model="model.content" redactor></textarea>
+    <div class="col-md-4 rows">
+        <div note-toolbar options="toolbarOptions"/>
+        <div class="major rows">
+            <h4 ng-hide="inEditMode">
+                {{model.subject}}
+            </h4>
+            <div class="major rows">
+                <input ng-show="inEditMode" type="text" ng-model="model.subject"></input>
+                <div class="major" ng-hide="inEditMode" ng-bind-html="model.content"></div>
+                <div class="major rows" ng-show="inEditMode">
+                    <textarea class="major" ng-model="model.newContent" nt-redactor></textarea>
+                </div>
+            </div>
         </div>
     </div>
 </div>
