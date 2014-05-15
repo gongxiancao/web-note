@@ -35,14 +35,14 @@ angular.module('note').directive('noteSelect', ['$parse', 'NoteUtilityService', 
 
             scope.$parent.$watch(modelGet, function (id){
                 if(id && scope.tree) {
-                    scope.path = NoteUtilityService.buildPath(id, scope.tree);
+                    scope.path = NoteUtilityService.buildPath(id, scope.tree, true);
                 }
             });
 
             scope.$watch('tree', function (data){
                 var id = modelGet(scope.$parent);
                 if(data && id) {
-                    scope.path = NoteUtilityService.buildPath(id, scope.tree);
+                    scope.path = NoteUtilityService.buildPath(id, scope.tree, true);
                 }
             });
 

@@ -10,10 +10,10 @@ angular.module('note').service('NoteUtilityService',
             return map;
         };
 
-        var buildPath = this.buildPath = function (id, nodes) {
+        var buildPath = this.buildPath = function (id, nodes, addSelf) {
             var map = buildMap({}, nodes),
                 node = map[id],
-                path = [node];
+                path = addSelf? [node] : [];
             while(node && node.parent) {
                 node = map[node.parent];
                 path.push(node);

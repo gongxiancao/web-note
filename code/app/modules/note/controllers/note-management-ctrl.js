@@ -42,5 +42,6 @@ angular.module('note').controller('NoteManagementCtrl', ['$scope', '$state', 'No
         loadNoteTrees();
 
         $scope.$on(NoteUiService.newNoteAdded, loadNoteTrees);
+        $scope.$on(NoteUiService.noteChanged, loadNoteTrees);
     }
 ]);

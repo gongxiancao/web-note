@@ -1,4 +1,8 @@
 <div class="major rows">
-    <div class="row" note-path options="pathOptions"></div>
+    <div class="cols">
+      <div ng-show="!inEditMode" class="major" note-path options="pathOptions"></div>
+      <div ng-show="inEditMode" class="major" note-select ng-model="model.parent"></div>
+      <div class="col-md-4" note-toolbar options="toolbarOptions"/>
+    </div>
     <div class="major rows" ng-include="templateUrl"></div>
 </div>

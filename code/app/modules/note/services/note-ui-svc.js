@@ -2,11 +2,12 @@
 
 angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogService', 'NoteEntity', 'UtilityService',
     function ($rootScope, $q, DialogService, NoteEntity, UtilityService) {
+        var that = this;
         this.newNoteAdded = 'newNoteAdded';
+        this.newNoteEdited = 'noteChanged';
 
         this.openAddNewNote = function() {
-            var that = this,
-                scope = $rootScope.$new(),
+            var scope = $rootScope.$new(),
                 opts = {
                     title: 'Add new note',
                     contentUrl: 'modules/note/templates/add-note.tpl.html',
@@ -18,14 +19,7 @@ angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogServ
                             handler: function () {
                                 this.close();
                                 var note = scope.model;
-                                NoteEntity.save(note).$promise.then(
-                                    function () {
-                                        $rootScope.$broadcast(that.newNoteAdded, note);
-                                    },
-                                    function (err) {
-                                        throw err;
-                                    }
-                                );
+                                that.save(note);
                             }
                         },
                         {
@@ -41,6 +35,24 @@ angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogServ
                 };
             scope.model = {};
             return DialogService.open(opts, scope);
+        };
+
+        this.save = function (note) {
+            var deferred = $q.defer();
+            NoteEntity.save(note).$promise.then(
+                function (data) {
+                    if(note.id) {
+                        $rootScope.$broadcast(that.noteChanged, note);
+                    } else {
+                        $rootScope.$broadcast(that.newNoteAdded, note);
+                    }
+                    deferred.resolve(data);
+                },
+                function (err) {
+                    deferred.reject(err);
+                }
+            );
+            return deferred.promise;
         };
     }
 ]);

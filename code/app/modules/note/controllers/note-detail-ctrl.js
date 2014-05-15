@@ -20,7 +20,7 @@ angular.module('note').controller('NoteDetailCtrl', ['$scope', '$stateParams', '
 
         $scope.$watch('noteTree', function (data, old) {
             if(data) {
-                $scope.notePath = NoteUtilityService.buildPath($scope.id, data);
+                $scope.notePath = NoteUtilityService.buildPath($scope.id, data, false);
             }
         });
 
@@ -44,10 +44,9 @@ angular.module('note').controller('NoteDetailCtrl', ['$scope', '$stateParams', '
                     actionHandler: function () {
                         $scope.model.content = $scope.model.newContent;
                         delete $scope.model.newContent;
-                        NoteEntity.save($scope.model, function (result) {
-                            console.log('save successful');
+                        NoteUiService.save($scope.model).then(function () {
+                            $scope.inEditMode = false;
                         });
-                        $scope.inEditMode = false;
                     },
                     visible: function () {
                         return $scope.inEditMode;
