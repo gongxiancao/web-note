@@ -1,10 +1,12 @@
 <div class="major rows">
-    <div>
+    <div class="form-group">
         <h3 ng-hide="inEditMode" class="col-md-8">{{model.subject}}</h3>
-        <input ng-show="inEditMode" class="col-md-8 subject" type="text" ng-model="model.subject"></input>
+        <div class="form-group">
+            <input ng-show="inEditMode" class="col-md-8 form-control" type="text" ng-model="model.subject">
+        </div>
     </div>
 
-    <div class="major rows">
+    <div class="major rows form-group">
         <div class="major" ng-hide="inEditMode" ng-bind-html="model.content"></div>
         <div class="major rows" ng-if="inEditMode">
             <textarea class="major rows" ng-model="model.newContent" nt-redactor></textarea>

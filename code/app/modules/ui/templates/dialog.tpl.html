@@ -7,7 +7,7 @@
     <button id="dialog-button-{{$index}}" class="btn" ng-repeat="buttonInfo in buttonInfos"
             ng-click="invokeHandler(buttonInfo.handler)"
             ng-disabled="buttonInfo.watcher()"
-            ng-class="{'btn-primary': buttonInfo.primary}">
+            ng-class="buttonInfo.class">
         {{buttonInfo.label}}
     </button>
 </div>

@@ -4,7 +4,8 @@ angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogServ
     function ($rootScope, $q, DialogService, NoteEntity, UtilityService) {
         var that = this;
         this.newNoteAdded = 'newNoteAdded';
-        this.newNoteEdited = 'noteChanged';
+        this.noteChanged = 'noteChanged';
+        this.nodeSelected = 'noteSelected';
 
         this.openAddNewNote = function() {
             var scope = $rootScope.$new(),
@@ -14,7 +15,7 @@ angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogServ
                     buttonInfos: [
                         {
                             label: 'Save',
-                            primary: true,
+                            class: 'btn-primary',
                             disabled: UtilityService.$false,
                             handler: function () {
                                 this.close();
@@ -24,7 +25,7 @@ angular.module('note').service('NoteUiService', ['$rootScope', '$q', 'DialogServ
                         },
                         {
                             label: 'Cancel',
-                            primary: false,
+                            class: 'btn-warning',
                             disabled: UtilityService.$false,
                             handler: function () {
                                 this.close();

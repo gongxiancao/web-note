@@ -13,35 +13,5 @@ angular.module('note').controller('NoteManagementCtrl', ['$scope', '$state', 'No
             }
         };
 
-        function loadNoteTrees() {
-            NoteTreeEntity.query(function (trees) {
-                $scope.noteTree = trees;
-            });
-        }
-
-        $scope.toolbarOptions = {
-            buttons: [
-                {
-                    name: 'add',
-                    localized_label: 'Add note',
-                    actionHandler: function () {
-                        var note = {};
-                        NoteUiService.openAddNewNote(note).then(
-                            function (note) {
-                                console.log(note);
-                            },
-                            function (err) {
-                                throw err;
-                            }
-                        );
-                    }
-                }
-            ]
-        };
-
-        loadNoteTrees();
-
-        $scope.$on(NoteUiService.newNoteAdded, loadNoteTrees);
-        $scope.$on(NoteUiService.noteChanged, loadNoteTrees);
     }
 ]);

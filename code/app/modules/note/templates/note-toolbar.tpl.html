@@ -1,6 +1,8 @@
 <div class="note-toolbar">
     <ul>
-        <li ng-repeat="button in options.buttons | filter: visible"><button class="btn" ng-click="button.actionHandler()">{{button.localized_label}}</button></li>
+        <li ng-repeat="button in options.buttons | filter: visible">
+          <button class="btn" ng-class="button.class" ng-click="button.actionHandler()">{{button.localized_label}}</button>
+        </li>
         <div class="clear-fix"></div>
     </ul>
 </div>
